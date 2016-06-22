@@ -1,0 +1,82 @@
+! xscreensaver ---------------------------------------------------------------
+
+!font settings
+xscreensaver.Dialog.headingFont:        -*-dina-bold-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.bodyFont:           -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.labelFont:          -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.unameFont:          -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.buttonFont:         -*-dina-bold-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.dateFont:           -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.passwd.passwdFont:         -*-dina-bold-r-*-*-10-*-*-*-*-*-*-*
+!general dialog box (affects main hostname, username, password text)
+xscreensaver.Dialog.foreground:         #EDEDED
+xscreensaver.Dialog.background:         #202020
+xscreensaver.Dialog.topShadowColor:     #202024
+xscreensaver.Dialog.bottomShadowColor:  #202024
+xscreensaver.Dialog.Button.foreground:  #EDEDFF
+xscreensaver.Dialog.Button.background:  #444
+!username/password input box and date text colour
+xscreensaver.Dialog.text.foreground:    #EDEDFF
+xscreensaver.Dialog.text.background:    #444
+xscreensaver.Dialog.internalBorderWidth:24
+xscreensaver.Dialog.borderWidth:        0
+xscreensaver.Dialog.shadowThickness:    2
+!timeout bar (background is actually determined by Dialog.text.background)
+xscreensaver.passwd.thermometer.foreground:  #A9B7C4
+xscreensaver.passwd.thermometer.background:  #202020
+xscreensaver.passwd.thermometer.width:       8
+!datestamp format--see the strftime(3) manual page for details
+xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
+
+!Xft settings
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
+
+URxvt*font: xft:Inconsolata:pixelsize=16:antialias=true
+URxvt*boldFont: xft:Inconsolata:style=Bold:pixelsize=16:antialias=true
+
+! to match gnome-terminal "Linux console" scheme
+! black
+URxvt.color0  : #000000
+URxvt.color8  : #555555
+! red
+URxvt.color1  : #ff0054
+URxvt.color9  : #FF5555
+! green
+URxvt.color2  : #00ff54
+URxvt.color10 : #55FF55
+! yellow
+URxvt.color3  : #AA5500
+URxvt.color11 : #FFFF55
+! blue
+URxvt.color4  : #0054ff
+URxvt.color12 : #5555FF
+! magenta
+URxvt.color5  : #AA00AA
+URxvt.color13 : #FF55FF
+! cyan
+URxvt.color6  : #00AAAA
+URxvt.color14 : #55FFFF
+! white
+URxvt.color7  : #AAAAAA
+URxvt.color15 : #FFFFFF
+
+
+URxvt*buffered: true
+URxvt*foreground: #ffffff
+URxvt*background: rgba:0000/0000/0000/dddd
+URxvt*transparent: true
+URxvt*fading: 2%
+URxvt*fadeColor: grey
+URxvt*shading: 15
+
+URxvt*scrollBar:     false
+
+URxvt.keysym.C-k:    echo -ne '\\033c'\n
+
+urxvt*perl-lib:            /usr/lib/urxvt/perl/
+urxvt*perl-ext-common:        default,matcher
+urxvt*urlLauncher:        /usr/bin/chromium-browser
+urxvt*matcher.button:        1
