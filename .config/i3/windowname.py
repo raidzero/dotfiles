@@ -1,5 +1,6 @@
 #!/usr/bin/env python2
 import i3ipc
+import string
 
 workspace_defaults = {
 	1: "1:term",
@@ -17,7 +18,8 @@ workspace_defaults = {
 i3 = i3ipc.Connection()
 
 def truncate_name(name):
-	return name[:40] + (name[40:] and '...')
+	truncated = name[:40] + (name[40:] and '...')
+	return filter(lambda x: x in set(string.printable), name)
 
 
 def on_event(i3, e):
