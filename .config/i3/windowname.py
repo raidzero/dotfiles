@@ -19,7 +19,7 @@ i3 = i3ipc.Connection()
 
 def truncate_name(name):
 	truncated = name[:40] + (name[40:] and '...')
-	return filter(lambda x: x in set(string.printable), name)
+	return filter(lambda x: x in set(string.printable), truncated)
 
 
 def on_event(i3, e):
