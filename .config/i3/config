@@ -107,13 +107,12 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# name workspaces
-set $workspace1 "1: term"
-set $workspace2 "2: code"
-set $workspace3 "3: www"
-set $workspace4 "4: ssh"
-set $workspace5 "5: chat"
-set $workspace0 "10: game"
+set $workspace1 "1:term"
+set $workspace2 "2:code"
+set $workspace3 "3:www"
+set $workspace4 "4:ssh"
+set $workspace5 "5:chat"
+set $workspace0 "10:game"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -197,7 +196,8 @@ mode "move" {
 # finds out, if available)
 bar {
 	position top
-        status_command i3status
+        #status_command ~/.config/i3/i3status.sh
+	status_command i3status
 	colors {
 		background #000000
         	statusline #ffffff
@@ -230,6 +230,9 @@ exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/xfconf/xfconfd # respect xf
 exec --no-startup-id xfsettingsd
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-volumed
+
+# ws namer
+exec --no-startup-id ~/.config/i3/windowname.py
 
 #exec --no-startup-id blueman-applet # bluetooth
 #exec --no-startup-id nm-applet # network manager
