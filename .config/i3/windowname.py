@@ -38,9 +38,12 @@ def on_event(i3, e):
 					current_name = ws.name					
 					if ws.num != current_num:
 						new_name = workspace_defaults[ws.num]
-					else:
-						new_name = "%d:%s" % (current_num, truncate_name(window.name))
-						
+					else:	
+						if window.name != None:
+							new_name = "%d:%s" % (current_num, truncate_name(window.name))
+						else:
+							new_name = workspace_defaults[ws.num]
+								
 					i3.command("rename workspace \"%s\" to \"%s\"" % (current_name, new_name))
 		
 i3.on('workspace', on_event)
