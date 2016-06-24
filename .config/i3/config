@@ -248,12 +248,14 @@ assign [class="google-chrome"] $workspace3
 assign [class="chromium-browser"] $workspace3
 assign [class="jetbrains-studio"] $workspace2
 assign [class="Snes9x-gtk"] $workspace0
+assign [class="zsnes"] $workspace0
 assign [class="Steam"] $workspace0
 
 # make float
 for_window [class="Xfce4-taskmanager"] floating enable, border normal
 for_window [class="Keepassx"] floating enable, border normal
 for_window [class="Galculator"] floating enable, border normal
+for_window [class="Speedcrunch"] floating enable, border normal
 for_window [class="Ristretto"] floating enable, border normal
 #for_window [class="feh"] floating enable, border normal
 
