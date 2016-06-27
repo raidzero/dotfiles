@@ -2,3 +2,30 @@ Xft.hinting: true
 Xft.hintstyle: hintfull 
 Xft.antialias: rgba 
 Xft.rgba: rgb
+
+
+#define r_bg   #000000
+#define r_fg   #aaaaaa
+#define r_hlfg #ffffff
+
+! States: bg, fg, bgalt, hlbg, hlfg
+rofi.color-enabled: true
+rofi.color-normal: r_bg,r_fg,#000000,r_bg,r_hlfg
+rofi.color-urgent: r_bg,#ffffff,#000000,r_bg,r_hlfg
+rofi.color-active: r_bg,r_fg,#ffffff,r_bg,#ffffff
+! states: background, border
+rofi.color-window: r_bg,#ffffff
+
+rofi.separator-style: solid
+rofi.sidebar-mode: false
+rofi.bw: 1
+rofi.columns: 1
+rofi.padding: 5
+
+rofi.yoffset: -300
+rofi.opacity: 80
+rofi.fake-transparency: false
+rofi.location: 0
+rofi.width: 30
+rofi.font: Inconsolata 12
+rofi.lines: 10

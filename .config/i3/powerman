@@ -1,0 +1,16 @@
+#!/bin/bash
+
+OPTION=`echo -en "hibernate-stayoff\nhibernate-reboot\nsuspend\nshutdown\nreboot" | dmenu` 
+
+case $OPTION in
+	hibernate-stayoff)
+		/usr/local/sbin/hibernate;;
+	hibernate-reboot)
+		/usr/local/sbin/hibernate reboot;;
+	suspend)
+		/home/raidzero/bin/lockscreen; pm-suspend;;
+	shutdown)
+		shutdown -t now;;
+	reboot)
+		reboot;;
+esac
