@@ -17,8 +17,9 @@ workspace_defaults = {
 
 
 def truncate_name(name):
-	length = 50
-	name = name.replace("&", "+")
+	length = 100
+	print name
+	name = name.replace("&", "+").replace("\"", "\\\"").replace("\'", "\'")
 	truncated = name[:length] + (name[length:] and '...')
 	return filter(lambda x: x in set(string.printable), truncated)
 

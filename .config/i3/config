@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:Ninbus Sans L 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -30,13 +30,13 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id urxvt
+bindsym $mod+Return exec --no-startup-id urxvtc
 
 # kill focused window 
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run -nb '#000000' -nf '#ffffff' -sb '#00ff54' -sf '#000000' -fn 'Inconsolata-11'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -56,6 +56,9 @@ bindsym $mod+BackSpace exec --no-startup-id xfce4-taskmanager
 
 # calendar
 bindsym $mod+c exec --no-startup-id gsimplecal
+
+# show scratchpad term
+bindsym $mod+Tab scratchpad show
 
 # change focus
 bindsym $mod+j focus left
@@ -196,17 +199,18 @@ mode "move" {
 # finds out, if available)
 bar {
 	position top
-        #status_command ~/.config/i3/i3status.sh
-	status_command i3status
+	#mode hide
+	status_command ~/.config/i3/i3status.sh
+	#status_command i3status
 	colors {
 		background #000000
         	statusline #ffffff
         	separator #666666
 		
 		#class		   border  bg	   text
-        	focused_workspace  #666666 #000000 #ffffff
-        	active_workspace   #333333 #5f676a #ffffff
-        	inactive_workspace #333333 #222222 #888888
+        	focused_workspace  #666666 #000000 #00ff54
+        	active_workspace   #333333 #000000 #ffffff
+        	inactive_workspace #333333 #000000 #888888
         	urgent_workspace   #2f343a #900000 #ffffff
         	binding_mode       #2f343a #900000 #ffffff
 	}
@@ -220,19 +224,22 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
 #Startup programs
-exec --no-startup-id ~/.config/i3/windowname.py
+exec --no-startup-id ~/.config/i3/windowname.py &> ~/names.log
+#exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
 
+exec --no-startup-id urxvtd
 exec --no-startup-id xset r rate 300 30
-exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
 exec --no-startup-id dropbox start
-exec --no-startup-id feh --bg-fill ~/wallpapers/grey_mobo.png # set background
-exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/xfconf/xfconfd # respect xfce settings
+exec --no-startup-id feh --bg-fill ~/wallpapers/green_curves.jpg # set background
 
 #xfce daemons
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/xfconf/xfconfd # respect xfce settings
 exec --no-startup-id xfsettingsd
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-volumed
 
+# start scratchpad
+exec --no-startup-id urxvtc -name urxvt_scratchpad
 
 #exec --no-startup-id blueman-applet # bluetooth
 #exec --no-startup-id nm-applet # network manager
@@ -247,6 +254,7 @@ for_window [class="messenger.com" window_role="pop_up"] move container to worksp
 assign [class="google-chrome"] $workspace3
 assign [class="chromium-browser"] $workspace3
 assign [class="jetbrains-studio"] $workspace2
+assign [class="SmartGit"] $workspace2
 assign [class="Snes9x-gtk"] $workspace0
 assign [class="zsnes"] $workspace0
 assign [class="Steam"] $workspace0
@@ -258,6 +266,9 @@ for_window [class="Galculator"] floating enable, border normal
 for_window [class="Speedcrunch"] floating enable, border normal
 for_window [class="Ristretto"] floating enable, border normal
 #for_window [class="feh"] floating enable, border normal
+
+# scratchpad terminal
+for_window [instance="urxvt_scratchpad"] move scratchpad; scratchpad show; move position 16px 20px; resize grow width 925px; move scratchpad
 
 # 1 pixel decoration on new windows
 new_window 1pixel

@@ -63,13 +63,13 @@ URxvt.color14 : #55FFFF
 URxvt.color7  : #AAAAAA
 URxvt.color15 : #FFFFFF
 
-
+urxvt*depth: 32
 URxvt*buffered: true
 URxvt*foreground: #ffffff
-URxvt*background: rgba:0000/0000/0000/dddd
+URxvt*background: rgba:0000/0000/0000/cccc
 URxvt*transparent: true
-URxvt*fading: 2%
-URxvt*fadeColor: grey
+!URxvt*fading: 50%
+!URxvt*fadeColor: grey
 URxvt*shading: 15
 
 URxvt*scrollBar:     false
