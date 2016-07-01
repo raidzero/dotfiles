@@ -118,16 +118,16 @@ set $workspace5 "5:chat"
 set $workspace0 "10:game"
 
 # switch to workspace
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
 bindsym $mod+6 workspace number 6
 bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
+bindsym $mod+0 workspace $workspace0
 
 bindsym $mod+bracketleft workspace prev
 bindsym $mod+bracketright workspace next
@@ -197,24 +197,24 @@ mode "move" {
 }
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-	position top
+#bar {
+	#position top
 	#mode hide
-	status_command ~/.config/i3/i3status.sh
+	#status_command ~/.config/i3/i3status.sh
 	#status_command i3status
-	colors {
-		background #000000
-        	statusline #ffffff
-        	separator #666666
+	#colors {
+	#	background #000000
+        #	statusline #ffffff
+        #	separator #666666
 		
 		#class		   border  bg	   text
-        	focused_workspace  #666666 #000000 #00ff54
-        	active_workspace   #333333 #000000 #ffffff
-        	inactive_workspace #333333 #000000 #888888
-        	urgent_workspace   #2f343a #900000 #ffffff
-        	binding_mode       #2f343a #900000 #ffffff
-	}
-}
+        #	focused_workspace  #666666 #000000 #00ff54
+        #	active_workspace   #333333 #000000 #ffffff
+        #	inactive_workspace #333333 #000000 #888888
+        #	urgent_workspace   #2f343a #900000 #ffffff
+        #	binding_mode       #2f343a #900000 #ffffff
+	#}
+#}
 # class                 border  backgr. text    indicator child_border
 client.focused          #444444 #000000 #ffffff #2e9ef4   #444444
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
@@ -224,9 +224,9 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
 #Startup programs
-exec --no-startup-id ~/.config/i3/windowname.py &> ~/names.log
+#exec --no-startup-id ~/.config/i3/windowname.py &> ~/names.log
 #exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
-
+exec --no-startup-id yabar
 exec --no-startup-id urxvtd
 exec --no-startup-id xset r rate 300 30
 exec --no-startup-id dropbox start

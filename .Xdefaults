@@ -52,7 +52,7 @@ URxvt.color3  : #AA5500
 URxvt.color11 : #FFFF55
 ! blue
 URxvt.color4  : #0054ff
-URxvt.color12 : #5555FF
+URxvt.color12 : #0074ff
 ! magenta
 URxvt.color5  : #AA00AA
 URxvt.color13 : #FF55FF
