@@ -2,7 +2,11 @@
 import i3ipc
 import sys
 
+focused_ws = " <span foreground='#00ff54' underline='single'>%s</span> "
+unfocused_ws = " %s "
+
 def printData(data):
+	sys.stdout.flush()
 	sys.stdout.write("%s :" % data)
 	sys.stdout.flush()
 
@@ -14,14 +18,14 @@ workspaceLine = ''
 
 for ws in workspaces:
 	if ws['focused']:
-		workspaceLine += " [<span foreground='#00ff54'>%s</span>] " % ws.name
+		workspaceLine += focused_ws % ws.name
 	else:
-		workspaceLine += " %s " % ws.name
+		workspaceLine += unfocused_ws % ws.name
 
 printData(workspaceLine)
 	
 def showWorkspaces(i3, e):
-	if not e.change in [ 'init', 'focus', 'empty' ]:
+	if not e.change in [ 'init', 'focus', 'empty', 'rename' ]:
 		return 
 	
 	workspaces = i3.get_workspaces()
@@ -29,9 +33,9 @@ def showWorkspaces(i3, e):
 
 	for ws in workspaces:
 		if ws['focused']:
-			workspaceLine += " [<span foreground='#00ff54'>%s</span>] " % ws.name
+			workspaceLine += focused_ws % ws.name
 		else:
-			workspaceLine += " %s " % ws.name
+			workspaceLine += unfocused_ws % ws.name
 	
 	printData(workspaceLine)
 

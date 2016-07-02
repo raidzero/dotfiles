@@ -60,6 +60,8 @@ bindsym $mod+c exec --no-startup-id gsimplecal
 # show scratchpad term
 bindsym $mod+Tab scratchpad show
 
+# rename current workspace
+bindsym $mod+n exec --no-startup-id ~/.config/i3/renamews.sh
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
