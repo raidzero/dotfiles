@@ -59,6 +59,7 @@ bindsym $mod+c exec --no-startup-id gsimplecal
 
 # show scratchpad term
 bindsym $mod+Tab scratchpad show
+bindsym $mod+grave scratchpad show
 
 # rename current workspace
 bindsym $mod+n exec --no-startup-id ~/.config/i3/renamews.sh
@@ -130,6 +131,20 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace $workspace0
+
+# blackwidow macro keys
+  # switch workspace
+bindsym XF86Tools workspace $workspace1
+bindsym XF86Launch5 workspace $workspace2
+bindsym XF86Launch6 workspace $workspace3
+bindsym XF86Launch7 workspace $workspace4
+bindsym XF86Launch8 workspace $workspace5
+  # move to workspace
+bindsym Shift+XF86Tools move container to workspace $workspace1
+bindsym Shift+XF86Launch5 move container to workspace $workspace2
+bindsym Shift+XF86Launch6 move container to workspace $workspace3
+bindsym Shift+XF86Launch7 move container to workspace $workspace4
+bindsym Shift+XF86Launch8 move container to workspace $workspace5
 
 bindsym $mod+bracketleft workspace prev
 bindsym $mod+bracketright workspace next
@@ -228,6 +243,7 @@ client.background       #ffffff
 #Startup programs
 #exec --no-startup-id ~/.config/i3/windowname.py &> ~/names.log
 #exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
+exec --no-startup-id setxkbmap -option "caps:super"
 exec --no-startup-id yabar
 exec --no-startup-id urxvtd
 exec --no-startup-id xset r rate 300 30
@@ -253,13 +269,13 @@ for_window [class="messenger.com" window_role="pop_up"] move container to worksp
 # hangouts
 #for_window [title="^Google Hangouts.*$" window_role="app"] move container to workspace $workspace5
 
-assign [class="google-chrome"] $workspace3
-assign [class="chromium-browser"] $workspace3
-assign [class="jetbrains-studio"] $workspace2
-assign [class="SmartGit"] $workspace2
-assign [class="Snes9x-gtk"] $workspace0
-assign [class="zsnes"] $workspace0
-assign [class="Steam"] $workspace0
+#assign [class="google-chrome"] $workspace3
+#assign [class="chromium-browser"] $workspace3
+#assign [class="jetbrains-studio"] $workspace2
+#assign [class="SmartGit"] $workspace2
+#assign [class="Snes9x-gtk"] $workspace0
+#assign [class="zsnes"] $workspace0
+#assign [class="Steam"] $workspace0
 
 # make float
 for_window [class="Xfce4-taskmanager"] floating enable, border normal
