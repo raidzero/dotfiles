@@ -248,7 +248,7 @@ exec --no-startup-id yabar
 exec --no-startup-id urxvtd
 exec --no-startup-id xset r rate 300 30
 exec --no-startup-id dropbox start
-exec --no-startup-id feh --bg-fill ~/wallpapers/green_curves.jpg # set background
+exec --no-startup-id sh ~/.fehbg # set background
 
 #xfce daemons
 exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/xfconf/xfconfd # respect xfce settings
@@ -283,6 +283,7 @@ for_window [class="Keepassx"] floating enable, border normal
 for_window [class="Galculator"] floating enable, border normal
 for_window [class="Speedcrunch"] floating enable, border normal
 for_window [class="Ristretto"] floating enable, border normal
+for_window [class="Pavucontrol"] floating enable, border normal
 #for_window [class="feh"] floating enable, border normal
 
 # scratchpad terminal
