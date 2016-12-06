@@ -10,11 +10,12 @@ unfocused_ws = " %s "
 def buildWorkspaceLine(workspaces):
 	workspaceLine = ''
 	numWorkspaces = len(workspaces)
-	wsnum = 1
+	wsnum = 0
 	
 	for ws in workspaces:
+		wsnum += 1
 		divider = '|'
-		if wsnum == numWorkspaces:
+		if wsnum >= numWorkspaces:
 			divider = ''
 	
 		if ws['focused']:
@@ -23,11 +24,10 @@ def buildWorkspaceLine(workspaces):
 			workspaceLine += (urgent_ws + divider) % ws.name
 		else:
 			workspaceLine += (unfocused_ws + divider) % ws.name
-	wsnum += 1
+	
 	return workspaceLine
 
 def printData(data):
-	sys.stdout.flush()
 	sys.stdout.write("%s :" % data)
 	sys.stdout.flush()
 

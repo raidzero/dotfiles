@@ -13,7 +13,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Ninbus Sans L 8
+#font pango:Ninbus Sans L 8
+font pango:Ninbus Sans L, Awesome 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -37,6 +38,10 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run -nb '#000000' -nf '#ffffff' -sb '#00ff54' -sf '#000000' -fn 'Inconsolata-11'
+
+# metroid hack launcher
+bindsym $mod+z exec --no-startup-id ~/bin/metroid.sh
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -60,6 +65,11 @@ bindsym $mod+c exec --no-startup-id gsimplecal
 # show scratchpad term
 bindsym $mod+Tab scratchpad show
 bindsym $mod+grave scratchpad show
+
+# make something sticky and small in a corner
+bindsym $mod+y fullscreen disable; floating enable; resize set 640 480; sticky enable; move window to position 1270 590
+# undo that
+bindsym $mod+Shift+y fullscreen disable; floating disable; sticky disable
 
 # rename current workspace
 bindsym $mod+n exec --no-startup-id ~/.config/i3/renamews.sh
@@ -103,6 +113,9 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+
+# toggle sticky
+bindsym $mod+t sticky toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -212,26 +225,41 @@ mode "move" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
+# power menu
+set $sysmenu " [p]oweroff [r]eboot [h]ibernate h[i]bernate-reboot [s]leep "
+bindsym $mod+XF86PowerOff     mode $sysmenu
+
+mode $sysmenu {
+    bindsym p         exec shutdown -P now
+    bindsym r         exec reboot
+    bindsym h	      exec sudo /usr/local/sbin/hibernate; mode "default"
+    bindsym i 	      exec sudo /usr/local/sbin/hibernate reboot; mode "default"
+    bindsym s         exec ~/bin/lockscreen; pm-suspend; mode "default"
+    bindsym Return    mode "default"
+    bindsym Escape    mode "default"
+}
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-#bar {
-	#position top
+bar {
+	position top
 	#mode hide
 	#status_command ~/.config/i3/i3status.sh
-	#status_command i3status
-	#colors {
-	#	background #000000
-        #	statusline #ffffff
-        #	separator #666666
+	status_command i3status
+	colors {
+		background #000000
+        	statusline #ffffff
+        	separator #666666
 		
 		#class		   border  bg	   text
-        #	focused_workspace  #666666 #000000 #00ff54
-        #	active_workspace   #333333 #000000 #ffffff
-        #	inactive_workspace #333333 #000000 #888888
-        #	urgent_workspace   #2f343a #900000 #ffffff
-        #	binding_mode       #2f343a #900000 #ffffff
-	#}
-#}
+        	focused_workspace  #666666 #000000 #00ff54
+        	active_workspace   #333333 #000000 #ffffff
+        	inactive_workspace #333333 #000000 #888888
+        	urgent_workspace   #2f343a #900000 #ffffff
+        	binding_mode       #2f343a #900000 #ffffff
+	}
+}
 # class                 border  backgr. text    indicator child_border
 client.focused          #444444 #000000 #ffffff #2e9ef4   #444444
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
@@ -241,11 +269,12 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
 #Startup programs
-#exec --no-startup-id ~/.config/i3/windowname.py &> ~/names.log
-#exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
-exec --no-startup-id setxkbmap -option "caps:super"
-exec --no-startup-id yabar
 exec --no-startup-id urxvtd
+exec --no-startup-id urxvtc -name urxvt_scratchpad
+#exec --no-startup-id ~/.config/i3/windowname.py &> ~/names.log
+exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
+exec --no-startup-id setxkbmap -option "caps:super"
+#exec --no-startup-id yabar
 exec --no-startup-id xset r rate 300 30
 exec --no-startup-id dropbox start
 exec --no-startup-id sh ~/.fehbg # set background
@@ -256,16 +285,13 @@ exec --no-startup-id xfsettingsd
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-volumed
 
-# start scratchpad
-exec --no-startup-id urxvtc -name urxvt_scratchpad
-
 #exec --no-startup-id blueman-applet # bluetooth
 #exec --no-startup-id nm-applet # network manager
 #exec --no-startup-id pasystray # volume
 
 # Restrict programs to workspaces
 # messenger
-for_window [class="messenger.com" window_role="pop_up"] move container to workspace $workspace5
+#for_window [class="messenger.com" window_role="pop_up"] move container to workspace $workspace5
 # hangouts
 #for_window [title="^Google Hangouts.*$" window_role="app"] move container to workspace $workspace5
 
@@ -279,12 +305,15 @@ for_window [class="messenger.com" window_role="pop_up"] move container to worksp
 
 # make float
 for_window [class="Xfce4-taskmanager"] floating enable, border normal
-for_window [class="Keepassx"] floating enable, border normal
+#for_window [class="Keepassx"] floating enable, border normal
 for_window [class="Galculator"] floating enable, border normal
 for_window [class="Speedcrunch"] floating enable, border normal
 for_window [class="Ristretto"] floating enable, border normal
 for_window [class="Pavucontrol"] floating enable, border normal
 #for_window [class="feh"] floating enable, border normal
+
+# hangouts: never float, never sticky, no border, always on workspace 5
+for_window [title="^Google Hangouts.*$" window_role="app"] floating disable, sticky disable, border 1pixel, move to workspace $workspace5
 
 # scratchpad terminal
 for_window [instance="urxvt_scratchpad"] move scratchpad; scratchpad show; move position 16px 20px; resize grow width 925px; move scratchpad

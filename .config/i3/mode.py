@@ -1,10 +1,10 @@
 #!/usr/bin/env python
-import i3ipc
+import i3connection
 import sys
 
 mode_disp = " <span foreground='#ff0054'>[%s]</span> "
 
-i3 = i3ipc.Connection()
+i3 = i3connection.getConnection()
 
 def showMode(i3, event):
 	mode = event.change

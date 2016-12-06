@@ -8,7 +8,7 @@ workspace_defaults = {
 	3: "3:www",
 	4: "4:ssh",
 	5: "5:chat",
-	6: "6",
+	6: "6:music",
 	7: "7",
 	8: "8",
 	9: "9",
