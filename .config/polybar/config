@@ -58,7 +58,7 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
-enable-click = false
+enable-click = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
