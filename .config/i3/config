@@ -242,24 +242,25 @@ mode $sysmenu {
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-	position top
+#bar {
+#	position top
 	#mode hide
 	#status_command ~/.config/i3/i3status.sh
-	status_command i3status
-	colors {
-		background #000000
-        	statusline #ffffff
-        	separator #666666
+	#status_command i3status
+#	i3bar_command ~/.config/i3/polybar.sh
+#	colors {
+#		background #000000
+#       	statusline #ffffff
+#        	separator #666666
 		
 		#class		   border  bg	   text
-        	focused_workspace  #666666 #000000 #00ff54
-        	active_workspace   #333333 #000000 #ffffff
-        	inactive_workspace #333333 #000000 #888888
-        	urgent_workspace   #2f343a #900000 #ffffff
-        	binding_mode       #2f343a #900000 #ffffff
-	}
-}
+#        	focused_workspace  #000000 #000000 #00ff54
+#        	active_workspace   #000000 #000000 #ffffff
+#        	inactive_workspace #000000 #000000 #888888
+#        	urgent_workspace   #2f343a #900000 #ffffff
+#        	binding_mode       #2f343a #900000 #ffffff
+#	}
+#}
 # class                 border  backgr. text    indicator child_border
 client.focused          #444444 #000000 #ffffff #2e9ef4   #444444
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
@@ -269,8 +270,8 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
 #Startup programs
+exec --no-startup-id ~/.config/i3/i3status.sh
 exec --no-startup-id urxvtd
-exec --no-startup-id urxvtc -name urxvt_scratchpad
 #exec --no-startup-id ~/.config/i3/windowname.py &> ~/names.log
 exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
 exec --no-startup-id setxkbmap -option "caps:super"
@@ -278,6 +279,8 @@ exec --no-startup-id setxkbmap -option "caps:super"
 exec --no-startup-id xset r rate 300 30
 exec --no-startup-id dropbox start
 exec --no-startup-id sh ~/.fehbg # set background
+exec --no-startup-id urxvtc -name urxvt_scratchpad
+exec --no-startup-id ~/.config/i3/polybar.sh
 
 #xfce daemons
 exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/xfconf/xfconfd # respect xfce settings

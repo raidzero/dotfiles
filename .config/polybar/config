@@ -1,0 +1,106 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[colors]
+background = #d8000000
+background-alt = #444
+foreground = #ffffffff
+foreground-alt = #555
+primary = #00ff54
+secondary = #e60053
+alert = #bd2c40
+
+[bar/top]
+width = 100%
+height = 20
+radius = 0.0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = ${colors.background}
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 2
+module-margin-right = 2
+
+font-1 = FontAwesome:pixelsize=8;0
+font-0 = Ninbus Sans L:fontformat=truetype:size=8:antialias=false;0
+
+modules-left = i3 xwindow
+modules-center = 
+modules-right = i3status
+
+tray-position = right
+tary-padding = 2
+tray-background = ${colors.background}
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:150:...%
+format-foreground = ${colors.primary}
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+enable-click = false
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %name%
+label-focused-background = ${colors.primary}
+label-focused-foreground = ${colors.background}
+label-focused-underline = ${colors.background}
+label-focused-padding = 1
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %name%
+label-unfocused-padding = 1
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+[module/i3status]
+type = custom/script
+exec = cat /tmp/i3status
+interval = 2
+format-underline = #00000000
+format-prefix = "🖧 "
+format-prefix-foreground = #5b
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0

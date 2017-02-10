@@ -34,8 +34,8 @@ Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintfull
 
-URxvt*font: xft:Inconsolata:pixelsize=16:antialias=true
-URxvt*boldFont: xft:Inconsolata:style=Bold:pixelsize=16:antialias=true
+URxvt*font: xft:Inconsolata for Powerline:pixelsize=16:antialias=true
+URxvt*boldFont: xft:Inconsolata for Powerline:style=Bold:pixelsize=16:antialias=true
 
 ! to match gnome-terminal "Linux console" scheme
 ! black
@@ -64,26 +64,26 @@ URxvt*boldFont: xft:Inconsolata:style=Bold:pixelsize=16:antialias=true
 !URxvt.color15 : #FFFFFF
 
 URxvt.color0 : #000000
-URxvt.color1 : #22aa54
+URxvt.color1 : #ff0054
 URxvt.color2 : #00ff54
 URxvt.color3 : #04a118
 URxvt.color4 : #07b523
 URxvt.color5 : #09cb2e
 URxvt.color6 : #0cd33b
-URxvt.color7 : #0fec47
-URxvt.color8 : #12a755
-URxvt.color9 : #15c363
+URxvt.color7 : #aaaaaa
+URxvt.color8 : #333333
+URxvt.color9 : #ff0000
 URxvt.color10 : #1ce075
 URxvt.color11 : #3ce98a
 URxvt.color12 : #61eda0
 URxvt.color13 : #88f1b7
 URxvt.color14 : #b1f5d0
-URxvt.color15 : #e0fbec
+URxvt.color15 : #ffffff
 
 urxvt*depth: 32
 URxvt*buffered: true
 URxvt*foreground: #ffffff
-URxvt*background: rgba:0000/0000/0000/cccc
+URxvt*background: #d8000000
 URxvt*transparent: true
 !URxvt*fading: 50%
 !URxvt*fadeColor: grey
