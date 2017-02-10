@@ -45,7 +45,7 @@ modules-center =
 modules-right = i3status
 
 tray-position = right
-tary-padding = 2
+tray-padding = 2
 tray-background = ${colors.background}
 
 [module/xwindow]
