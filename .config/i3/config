@@ -237,7 +237,7 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
 #Startup programs
-exec --no-startup-id ~/.config/i3/i3status.sh
+#exec --no-startup-id ~/.config/i3/i3status.sh
 exec --no-startup-id urxvtd
 exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
 exec --no-startup-id setxkbmap -option "caps:super"

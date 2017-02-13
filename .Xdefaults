@@ -83,7 +83,7 @@ URxvt.color15 : #ffffff
 urxvt*depth: 32
 URxvt*buffered: true
 URxvt*foreground: #ffffff
-URxvt*background: #d8000000
+URxvt*background: rgba:0000/0000/0000/d800
 URxvt*transparent: true
 !URxvt*fading: 50%
 !URxvt*fadeColor: grey
