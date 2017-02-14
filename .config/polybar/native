@@ -41,7 +41,7 @@ font-1 = FontAwesome:pixelsize=8;0
 font-0 = Ninbus Sans L:fontformat=truetype:size=8:antialias=false;0
 
 modules-left = i3
-modules-center = xwindow
+modules-center = xwindow gmusic
 modules-right = cpu temperature filesystem wlan battery volume date
 
 tray-position = right
@@ -49,7 +49,7 @@ tray-padding = 5
 
 [module/xwindow]
 type = internal/xwindow
-format-foreground = ${colors.primary}
+;format-foreground = ${colors.primary}
 label = %title:0:75:...%
 
 [module/filesystem]
@@ -149,7 +149,7 @@ format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${colors.primary}
 label-discharging =  %percentage%% %time%
 
-format-full-prefix = " "
+format-full-prefix = " "
 format-full-underline = ${colors.primary}
 
 ramp-capacity-0 = 
@@ -185,6 +185,12 @@ label-warn-foreground = ${colors.alert}
 
 [settings]
 screenchange-reload = true
+
+[module/gmusic]
+type = custom/script
+interval = 5
+exec = ~/.config/polybar/songname.sh bar
+label = "%output:0:75:...%"
 
 [global/wm]
 margin-top = 0
