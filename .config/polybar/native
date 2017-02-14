@@ -49,7 +49,7 @@ tray-padding = 5
 
 [module/xwindow]
 type = internal/xwindow
-;format-foreground = ${colors.primary}
+format-underline = ${colors.primary}
 label = %title:0:75:...%
 
 [module/filesystem]
@@ -189,8 +189,9 @@ screenchange-reload = true
 [module/gmusic]
 type = custom/script
 interval = 5
-exec = ~/.config/polybar/songname.sh bar
+exec = ~/.config/polybar/songname.sh
 label = "%output:0:75:...%"
+format-underline = ${colors.primary}
 
 [global/wm]
 margin-top = 0
