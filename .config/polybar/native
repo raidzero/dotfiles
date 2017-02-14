@@ -28,8 +28,8 @@ foreground = ${colors.foreground}
 line-size = 1
 line-color = ${colors.primary}
 
-border-size = 0
-border-color = #00000000
+border-size = 1
+border-color = ${colors.background}
 
 padding-left = 0
 padding-right = 0
@@ -189,7 +189,7 @@ screenchange-reload = true
 [module/gmusic]
 type = custom/script
 interval = 5
-exec = ~/.config/polybar/songname.sh
+exec = awk -f ~/.config/polybar/gmusic.awk
 label = "%output:0:75:...%"
 format-underline = ${colors.primary}
 

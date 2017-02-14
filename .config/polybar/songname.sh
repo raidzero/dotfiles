@@ -8,4 +8,12 @@ fi
 
 HOSTNAME=`hostname`
 
-echo "$WINDOW_DATA" | sed 's/0x[0-9a-f]* *[0-9]* *'"$HOSTNAME"' *//' | sed 's/- Google Play Music$//' | awk -F ' - ' '{if($2 != ""){print "  " $2 " - " $1}else{print ""}}'
+echo "$WINDOW_DATA" | grep -oP '(?<='"$HOSTNAME"' ).*(?= - Google Play Music)' | awk \
+	-F ' - ' \
+		'{
+			if ($2 != "") {
+				print "  " $2 " - " $1
+			} else {
+				print ""
+			}
+		}'
