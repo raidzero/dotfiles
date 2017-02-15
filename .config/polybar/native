@@ -189,7 +189,7 @@ screenchange-reload = true
 [module/gmusic]
 type = custom/script
 interval = 5
-exec = awk -f ~/.config/polybar/gmusic.awk
+exec = python ~/.config/polybar/gmusic.py	
 label = "%output:0:75:...%"
 format-underline = ${colors.primary}
 

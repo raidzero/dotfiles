@@ -17,6 +17,7 @@ BEGIN {
 			exit 0
 		}
 	}
+
 	if (MUSIC_WINDOW_FOUND == 0) {
 		exit 1
 	}
