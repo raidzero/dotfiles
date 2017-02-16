@@ -109,9 +109,9 @@ format-connected = <label-connected>
 format-connected-underline = ${colors.primary}
 label-connected =  %essid% %signal%% %local_ip%
 
-format-disconnected =
+format-disconnected = <label-disconnected>
 format-disconnected-underline = ${colors.alert}
-label-disconnected =  disconnected
+label-disconnected =  Disconnected
 
 [module/date]
 type = internal/date
@@ -136,6 +136,7 @@ label-muted =  0%
 label-muted-underline = ${colors.primary}
 
 [module/battery]
+poll-interval = 2
 type = internal/battery
 battery = BAT0
 adapter = AC
@@ -143,11 +144,11 @@ full-at = 105
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = ${colors.primary}
-label-charging =  %percentage%% %time%
+label-charging =  %percentage%% %consumption%W ~%time%
 
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${colors.primary}
-label-discharging =  %percentage%% %time%
+label-discharging =  %percentage%% %consumption%W %time%
 
 format-full-prefix = " "
 format-full-underline = ${colors.primary}

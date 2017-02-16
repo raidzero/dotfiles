@@ -46,7 +46,6 @@ bindsym $mod+BackSpace exec --no-startup-id xfce4-taskmanager
 bindsym $mod+c exec --no-startup-id gsimplecal
 
 # show scratchpad term
-bindsym $mod+Tab scratchpad show
 bindsym $mod+grave scratchpad show
 
 # make something sticky and small in a corner
@@ -56,6 +55,9 @@ bindsym $mod+Shift+y fullscreen disable; floating disable; sticky disable
 
 # rename current workspace
 bindsym $mod+n exec --no-startup-id ~/.config/i3/renamews.sh
+
+# show rofi in window mode
+bindsym $mod+Tab exec --no-startup-id rofi -hide-scrollbar -show window
 
 # change focus
 bindsym $mod+j focus left
@@ -109,6 +111,10 @@ bindsym $mod+a focus parent
 
 # focus the child container
 bindsym $mod+b focus child
+
+# keys to switch beween eDP1 and HDMI
+bindsym $mod+o exec --no-startup-id xrandr --output HDMI1 --auto --output eDP1 --off
+bindsym $mod+p exec --no-startup-id xrandr --output HDMI1 --off --output eDP1 --auto
 
 set $workspace1 "1:term"
 set $workspace2 "2:code"
@@ -241,7 +247,6 @@ client.background       #ffffff
 exec --no-startup-id urxvtd
 exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
 exec --no-startup-id setxkbmap -option "caps:super"
-exec --no-startup-id redshift
 exec --no-startup-id dropbox start
 exec --no-startup-id sh ~/.fehbg # set background
 exec --no-startup-id urxvtc -name urxvt_scratchpad

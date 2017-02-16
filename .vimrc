@@ -5,6 +5,13 @@ behave mswin
 
 set laststatus=2
 set updatetime=250
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set autoindent
+set showcmd
+set hlsearch
+set incsearch
 
 set guioptions -=m 
 set guioptions -=T
