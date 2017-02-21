@@ -37,6 +37,7 @@ Xft.hintstyle:  hintfull
 URxvt*font: xft:Inconsolata for Powerline:pixelsize=16:antialias=true
 URxvt*boldFont: xft:Inconsolata for Powerline:style=Bold:pixelsize=16:antialias=true
 
+
 ! to match gnome-terminal "Linux console" scheme
 ! black
 !URxvt.color0  : #000000
@@ -84,7 +85,7 @@ urxvt*depth: 32
 URxvt*buffered: true
 URxvt*foreground: #ffffff
 URxvt*background: rgba:0000/0000/0000/d800
-URxvt*transparent: true
+#URxvt*transparent: true
 !URxvt*fading: 50%
 !URxvt*fadeColor: grey
 URxvt*shading: 15

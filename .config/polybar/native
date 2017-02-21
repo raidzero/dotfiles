@@ -37,12 +37,12 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
 
-font-1 = FontAwesome:pixelsize=8;0
 font-0 = Ninbus Sans L:fontformat=truetype:size=8:antialias=false;0
+font-1 = FontAwesome:pixelsize=8;0
 
 modules-left = i3
 modules-center = xwindow gmusic
-modules-right = cpu temperature filesystem wlan battery volume date
+modules-right = cpu memory filesystem wlan battery volume date
 
 tray-position = right
 tray-padding = 5
@@ -67,38 +67,70 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
+fuzzy-match = true
+
+; terminal ws
+ws-icon-0 = 1:term;
+; code ws
+ws-icon-1 = 2:code;
+; chrome ws
+ws-icon-2 = 3:www;
+; ssh ws
+ws-icon-3 = 4:ssh;
+; chat ws
+ws-icon-4 = 5:chat;
+; music ws
+ws-icon-5 = 6;
+; default 7
+ws-icon-6 = 
+; defualt 8
+ws-icon-7 = 
+; default 9
+ws-icon-8 = 
+; game ws
+ws-icon-9 = 10:game;
+
+ws-icon-default = 
 
 label-mode-padding = 1
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %name%
+label-focused = %icon%
 label-focused-background = ${colors.background}
 label-focused-underline = ${colors.primary}
-label-focused-padding = 1
+label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %name%
-label-unfocused-padding = 1
+label-unfocused = %icon%
+label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %name%
+label-visible = %icon%
 label-visible-background = $colors.background}
 label-visible-underline = ${colors.primary}
-label-visible-padding = 1
+label-visible-padding = 2
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %name%
+label-urgent = %icon%
 label-urgent-underline = ${colors.alert}
-label-urgent-padding = 1
+label-urgent-padding = 2
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-underline = ${colors.primary}
 label = %percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-underline = ${colors.primary}
+format = <label>
+label = "%percentage_used%%"
 
 [module/wlan]
 type = internal/network

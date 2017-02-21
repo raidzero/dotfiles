@@ -2,11 +2,17 @@
 
 alias cls="echo -ne '\033c'"
 
+alias wifishow="nmcli dev wifi"
+
 export PATH="$PATH:/opt/jdk1.8.0_91/bin"
 export PATH="$PATH:~/bin:~/bin/food"
 export PATH="$PATH:~/Android/Sdk/tools:~/Android/Sdk/platform-tools"
 
 DEFAULT_TERM_TITLE="#!"
+
+function wificon() {
+	nmcli dev wifi con "$1"
+}
 
 function mkcd() {
 	mkdir $1; cd $1

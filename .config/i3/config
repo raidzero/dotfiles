@@ -222,15 +222,14 @@ mode "move" {
 }
 
 # power menu
-set $sysmenu " [p]oweroff [r]eboot [h]ibernate h[i]bernate-reboot [s]leep "
+set $sysmenu " [l]ock [p]oweroff [r]eboot [s]leep "
 bindsym $mod+XF86PowerOff     mode $sysmenu
 
 mode $sysmenu {
-    bindsym p         exec shutdown -P now
-    bindsym r         exec reboot
-    bindsym h	      exec sudo /usr/local/sbin/hibernate; mode "default"
-    bindsym i 	      exec sudo /usr/local/sbin/hibernate reboot; mode "default"
-    bindsym s         exec ~/bin/lockscreen; pm-suspend; mode "default"
+	bindsym l		  exec ~/bin/lockscreen; mode default
+    bindsym p         exec sudo shutdown -P now
+    bindsym r         exec sudo reboot
+    bindsym s		  exec "~/bin/lockscreen & sudo pm-suspend"; mode default
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
@@ -249,8 +248,8 @@ exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
 exec --no-startup-id setxkbmap -option "caps:super"
 exec --no-startup-id dropbox start
 exec --no-startup-id sh ~/.fehbg # set background
-exec --no-startup-id urxvtc -name urxvt_scratchpad
 exec --no-startup-id ~/.config/i3/polybar.sh
+exec --no-startup-id urxvtc -name urxvt_scratchpad
 
 #xfce daemons
 exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/xfconf/xfconfd # respect xfce settings
@@ -269,7 +268,7 @@ for_window [class="Pavucontrol"] floating enable, border normal
 for_window [title="^Google Hangouts.*$" window_role="app"] floating disable, sticky disable, border 1pixel, move to workspace $workspace5
 
 # scratchpad terminal
-for_window [instance="urxvt_scratchpad"] move scratchpad; scratchpad show; move position 16px 20px; resize grow width 925px; move scratchpad
+for_window [instance="urxvt_scratchpad"] move scratchpad; scratchpad show; move position 15px 15px; resize grow width 925px; move scratchpad
 
 # 1 pixel decoration on new windows
 new_window 1pixel
