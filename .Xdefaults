@@ -81,14 +81,18 @@ URxvt.color13 : #88f1b7
 URxvt.color14 : #b1f5d0
 URxvt.color15 : #ffffff
 
-urxvt*depth: 32
+URxvt*depth: 32
 URxvt*buffered: true
 URxvt*foreground: #ffffff
 URxvt*background: rgba:0000/0000/0000/d800
-#URxvt*transparent: true
-!URxvt*fading: 50%
-!URxvt*fadeColor: grey
 URxvt*shading: 15
+
+# scratchpad transparency
+urxvt_scratchpad*depth: 32
+urxvt_scratchpad*buffered: true
+urxvt_scratchpad*foreground: #ffffff
+urxvt_scratchpad*background: rgba:0000/0000/0000/d000
+urxvt_scratchpad*shading: 15
 
 URxvt*scrollBar:     false
 

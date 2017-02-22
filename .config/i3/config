@@ -47,6 +47,7 @@ bindsym $mod+c exec --no-startup-id gsimplecal
 
 # show scratchpad term
 bindsym $mod+grave scratchpad show
+#bindsym $mod+grave ~/.config/i3/scratchpad.sh 
 
 # make something sticky and small in a corner
 bindsym $mod+y fullscreen disable; floating enable; resize set 640 480; sticky enable; move window to position 1270 590
@@ -99,6 +100,9 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+
+# toggle window decoration
+bindsym $mod+Shift+b border toggle
 
 # toggle sticky
 bindsym $mod+t sticky toggle
@@ -224,6 +228,7 @@ mode "move" {
 # power menu
 set $sysmenu " [l]ock [p]oweroff [r]eboot [s]leep "
 bindsym $mod+XF86PowerOff     mode $sysmenu
+bindsym $mod+Scroll_Lock	  mode $sysmenu
 
 mode $sysmenu {
 	bindsym l		  exec ~/bin/lockscreen; mode default
@@ -241,25 +246,10 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
-#Startup programs
-#exec --no-startup-id ~/.config/i3/i3status.sh
-exec --no-startup-id urxvtd
-exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
-exec --no-startup-id setxkbmap -option "caps:super"
-exec --no-startup-id dropbox start
-exec --no-startup-id sh ~/.fehbg # set background
-exec --no-startup-id ~/.config/i3/polybar.sh
-exec --no-startup-id urxvtc -name urxvt_scratchpad
-
-#xfce daemons
-exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/xfconf/xfconfd # respect xfce settings
-exec --no-startup-id xfsettingsd
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id xfce4-volumed
-
 # make float
 for_window [class="Xfce4-taskmanager"] floating enable, border normal
 for_window [class="Galculator"] floating enable, border normal
+for_window [class="Qalculate-gtk"] floating enable, border normal
 for_window [class="Speedcrunch"] floating enable, border normal
 for_window [class="Ristretto"] floating enable, border normal
 for_window [class="Pavucontrol"] floating enable, border normal
@@ -268,9 +258,13 @@ for_window [class="Pavucontrol"] floating enable, border normal
 for_window [title="^Google Hangouts.*$" window_role="app"] floating disable, sticky disable, border 1pixel, move to workspace $workspace5
 
 # scratchpad terminal
-for_window [instance="urxvt_scratchpad"] move scratchpad; scratchpad show; move position 15px 15px; resize grow width 925px; move scratchpad
+for_window [instance="urxvt_scratchpad"] move scratchpad; scratchpad show; move position 15px 15px; resize set 1000px 500px; move scratchpad
 
 # 1 pixel decoration on new windows
 new_window 1pixel
 
+# never any borders on edge of screen
 hide_edge_borders both
+
+#Startup programs
+exec --no-startup-id ~/.config/i3/autostart.sh
