@@ -172,7 +172,6 @@ poll-interval = 2
 type = internal/battery
 battery = BAT0
 adapter = AC
-full-at = 105
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = ${colors.primary}
@@ -218,6 +217,8 @@ label-warn-foreground = ${colors.alert}
 
 [settings]
 screenchange-reload = true
+throttle-output = 5
+throttle-output-for = 10
 
 [module/gmusic]
 type = custom/script

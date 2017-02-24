@@ -119,6 +119,7 @@ bindsym $mod+b focus child
 # keys to switch beween eDP1 and HDMI
 bindsym $mod+o exec --no-startup-id xrandr --output HDMI1 --auto --output eDP1 --off
 bindsym $mod+p exec --no-startup-id xrandr --output HDMI1 --off --output eDP1 --auto
+bindsym $mod+Shift+w exec --no-startup-id sh ~/.fehbg
 
 set $workspace1 "1:term"
 set $workspace2 "2:code"
