@@ -8,9 +8,8 @@
 ;=====================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
 background = #d8000000
-foreground = #dfdfdf
+foreground = #ffffff
 primary = #00ff54
 secondary = #e60053
 alert = #bd2c40
@@ -28,7 +27,7 @@ foreground = ${colors.foreground}
 line-size = 1
 line-color = ${colors.primary}
 
-border-size = 1
+border-size = 0
 border-color = ${colors.background}
 
 padding-left = 0
@@ -37,12 +36,12 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Ninbus Sans L:fontformat=truetype:size=8:antialias=false;0
-font-1 = FontAwesome:pixelsize=10;0
+font-0 = Ninbus Sans L:fontformat=truetype:size=8:antialias=false;2
+font-1 = FontAwesome:pixelsize=10;2
 ; superscript - for ws index
-font-2 = Ninbus Sans L:fontformat=truetype:size=6:antialias=false;-3
+font-2 = Ninbus Sans L:fontformat=truetype:size=6:antialias=false;-2
 ; subscript icons
-font-3 = FontAwesome:pixelsize=10;2
+font-3 = FontAwesome:pixelsize=10;3
 
 modules-left = i3
 modules-center = xwindow gmusic
@@ -71,27 +70,17 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
-fuzzy-match = true
+fuzzy-match = false
 
-; terminal ws
 ws-icon-0 = 1:term;
-; code ws
 ws-icon-1 = 2:code;
-; chrome ws
 ws-icon-2 = 3:www;
-; ssh ws
 ws-icon-3 = 4:ssh;
-; chat ws
 ws-icon-4 = 5:chat;
-; music ws
 ws-icon-5 = 6;
-; default 7
 ws-icon-6 = 
-; defualt 8
 ws-icon-7 = 
-; default 9
 ws-icon-8 = 
-; game ws
 ws-icon-9 = 10:game;
 
 ws-icon-default = 
@@ -102,7 +91,8 @@ label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %{T3}%index% %{T4}%icon%
-label-focused-background = ${colors.background}
+label-focused-background = ${colors.primary}
+label-focused-foreground = #000000
 label-focused-underline = ${colors.primary}
 label-focused-padding = 1
 

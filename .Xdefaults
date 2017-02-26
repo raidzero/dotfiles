@@ -64,22 +64,43 @@ URxvt*boldFont: xft:Inconsolata for Powerline:style=Bold:pixelsize=16:antialias=
 !URxvt.color7  : #AAAAAA
 !URxvt.color15 : #FFFFFF
 
-URxvt.color0 : #000000
-URxvt.color1 : #ff0054
-URxvt.color2 : #00ff54
-URxvt.color3 : #04a118
-URxvt.color4 : #07b523
-URxvt.color5 : #09cb2e
-URxvt.color6 : #0cd33b
-URxvt.color7 : #aaaaaa
-URxvt.color8 : #333333
-URxvt.color9 : #ff0000
-URxvt.color10 : #1ce075
-URxvt.color11 : #3ce98a
-URxvt.color12 : #61eda0
-URxvt.color13 : #88f1b7
-URxvt.color14 : #b1f5d0
-URxvt.color15 : #ffffff
+! special
+*.foreground:   #ffffff
+*.background:   #000000
+*.cursorColor:  #ffffff
+
+! black
+*.color0:       #303030
+*.color8:       #555555
+
+! red
+*.color1:       #207424
+*.color9:       #00cc54
+
+! green
+*.color2:       #00ff54
+*.color10:      #55ff55
+
+! yellow
+*.color3:       #007454
+*.color11:      #00aacc
+
+! blue
+*.color4:       #2bf211
+*.color12:      #0094ff
+
+! magenta
+*.color5:       #09ae08
+*.color13:      #195e08
+
+! cyan
+*.color6:       #20f311
+*.color14:      #30f311
+
+! white
+*.color7:       #aaaaaa
+*.color15:      #ffffff
+
 
 URxvt*depth: 32
 URxvt*buffered: true
