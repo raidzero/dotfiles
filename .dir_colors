@@ -1,0 +1,3 @@
+DIR 01;32 # bold, green fg
+EXEC 32 # green fg
+LINK 36 # cyan fg

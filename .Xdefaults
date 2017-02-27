@@ -35,72 +35,41 @@ Xft.hinting:    true
 Xft.hintstyle:  hintfull
 
 URxvt*font: xft:Inconsolata for Powerline:pixelsize=16:antialias=true
-URxvt*boldFont: xft:Inconsolata for Powerline:style=Bold:pixelsize=16:antialias=true
+URxvt*boldFont: xft:Inconsolata:style=Bold:pixelsize=16:antialias=true
 
 
 ! to match gnome-terminal "Linux console" scheme
-! black
-!URxvt.color0  : #000000
-!URxvt.color8  : #555555
-! red
-!URxvt.color1  : #ff0054
-!URxvt.color9  : #FF5555
-! green
-!URxvt.color2  : #00ff54
-!URxvt.color10 : #55FF55
-! yellow
-!URxvt.color3  : #007454
-!URxvt.color11 : #00FF20
-! blue
-!URxvt.color4  : #0054ff
-!URxvt.color12 : #0074ff
-! magenta
-!URxvt.color5  : #00AA54
-!URxvt.color13 : #00CC54
-! cyan
-!URxvt.color6  : #00AAAA
-!URxvt.color14 : #55FFFF
-! white
-!URxvt.color7  : #AAAAAA
-!URxvt.color15 : #FFFFFF
+! 0-7 fg, 8-15 bg
+! black bg: 40m, fg: 30
+URxvt.color0  : #000000
+URxvt.color8  : #555555
+! red bg: 41m; fg: 31
+URxvt.color1  : #ff0054
+URxvt.color9  : #FF5555
 
-! special
-*.foreground:   #ffffff
-*.background:   #000000
-*.cursorColor:  #ffffff
+! green bg :42m; fg: 32
+URxvt.color2  : #00ff54
+URxvt.color10 : #00ff54
 
-! black
-*.color0:       #303030
-*.color8:       #555555
+! yellow bg: 43m; fg: 33
+URxvt.color3  : #00b040
+URxvt.color11 : #00dd44
 
-! red
-*.color1:       #207424
-*.color9:       #00cc54
+! blue bg: 44m; fg: 34
+URxvt.color4  : #00a030
+URxvt.color12 : #00cc33
 
-! green
-*.color2:       #00ff54
-*.color10:      #55ff55
+! magenta bg: 45m; fg:35
+URxvt.color5  : #00AA54
+URxvt.color13 : #00CC54
 
-! yellow
-*.color3:       #007454
-*.color11:      #00aacc
+! cyan bg: 46m; fg: 36
+URxvt.color6  : #00AAAA
+URxvt.color14 : #00ffc3
 
-! blue
-*.color4:       #2bf211
-*.color12:      #0094ff
-
-! magenta
-*.color5:       #09ae08
-*.color13:      #195e08
-
-! cyan
-*.color6:       #20f311
-*.color14:      #30f311
-
-! white
-*.color7:       #aaaaaa
-*.color15:      #ffffff
-
+! white bg: 47; fg: 37
+URxvt.color7  : #AAAAAA
+URxvt.color15 : #FFFFFF
 
 URxvt*depth: 32
 URxvt*buffered: true

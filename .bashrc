@@ -32,6 +32,8 @@ function _update_ps1() {
     PS1="$(~/Downloads/powerline-shell/powerline-shell.py $? 2> /dev/null)"
 }
 
+eval `dircolors -b "$HOME/.dir_colors"`
+
 if [ "$TERM" != "linux" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi

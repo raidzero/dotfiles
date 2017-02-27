@@ -1,3 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
-~/Downloads/i3lock-lixxia/i3lock -i ~/wallpapers/lockscreen.png -c '#000000' -o '#ffffff' -w '#ff0000' -l '#00ff54' -e
+# determine screen res
+RES=`xdpyinfo | grep dimensions`
+
+# 1440?
+if [[ $RES =~ 2560x1440 ]]; then
+	RES=1440
+else
+	RES=1080
+fi
+
+~/Downloads/i3lock-lixxia/i3lock -i ~/wallpapers/lockscreen-$RES.png -c '#000000' -o '#ffffff' -w '#ff0000' -l '#00ff54' -e

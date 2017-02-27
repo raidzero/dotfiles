@@ -251,6 +251,7 @@ mode "move" {
 # power menu
 set $sysmenu " [l]ock [p]oweroff [r]eboot [s]leep "
 bindsym $mod+XF86PowerOff     mode $sysmenu
+bindsym XF86PowerOff     mode $sysmenu
 bindsym $mod+Scroll_Lock	  mode $sysmenu
 
 mode $sysmenu {
@@ -270,12 +271,9 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
 # make float
-for_window [class="Xfce4-taskmanager"] floating enable, border normal
-for_window [class="Galculator"] floating enable, border normal
-for_window [class="Qalculate-gtk"] floating enable, border normal
-for_window [class="Speedcrunch"] floating enable, border normal
-for_window [class="Ristretto"] floating enable, border normal
-for_window [class="Pavucontrol"] floating enable, border normal
+for_window [class="Xfce4-taskmanager"] floating enable
+for_window [class="Galculator"] floating enable
+for_window [class="Pavucontrol"] floating enable
 
 # hangouts: never float, never sticky, no border, always on workspace 5
 for_window [title="^Google Hangouts.*$" window_role="app"] floating disable, sticky disable, border 1pixel, move to workspace $workspace5
