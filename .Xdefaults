@@ -37,39 +37,41 @@ Xft.hintstyle:  hintfull
 URxvt*font: xft:Inconsolata for Powerline:pixelsize=16:antialias=true
 URxvt*boldFont: xft:Inconsolata:style=Bold:pixelsize=16:antialias=true
 
+UXTerm*faceName: Inconsolata for Powerline
+UXTerm*faceSize: 12
 
 ! to match gnome-terminal "Linux console" scheme
 ! 0-7 fg, 8-15 bg
 ! black bg: 40m, fg: 30
-URxvt.color0  : #000000
-URxvt.color8  : #555555
+*.color0  : #000000
+*.color8  : #555555
 ! red bg: 41m; fg: 31
-URxvt.color1  : #ff0054
-URxvt.color9  : #FF5555
+*.color1  : #ff0054
+*.color9  : #FF5555
 
 ! green bg :42m; fg: 32
-URxvt.color2  : #00ff54
-URxvt.color10 : #00ff54
+*.color2  : #00ff54
+*.color10 : #00ff54
 
 ! yellow bg: 43m; fg: 33
-URxvt.color3  : #00b040
-URxvt.color11 : #00dd44
+*.color3  : #00b040
+*.color11 : #00dd44
 
 ! blue bg: 44m; fg: 34
-URxvt.color4  : #00a030
-URxvt.color12 : #00cc33
+*.color4  : #00a030
+*.color12 : #00cc33
 
 ! magenta bg: 45m; fg:35
-URxvt.color5  : #00AA54
-URxvt.color13 : #00CC54
+*.color5  : #00AA54
+*.color13 : #00CC54
 
 ! cyan bg: 46m; fg: 36
-URxvt.color6  : #00AAAA
-URxvt.color14 : #00ffc3
+*.color6  : #00AAAA
+*.color14 : #00ffc3
 
 ! white bg: 47; fg: 37
-URxvt.color7  : #AAAAAA
-URxvt.color15 : #FFFFFF
+*.color7  : #AAAAAA
+*.color15 : #FFFFFF
 
 URxvt*depth: 32
 URxvt*buffered: true
@@ -86,7 +88,7 @@ urxvt_scratchpad*shading: 15
 
 URxvt*scrollBar:     false
 
-URxvt.keysym.C-k:    echo -ne '\\033c'\n
+*.keysym.C-k:    echo -ne '\\033c'\n
 
 urxvt*perl-lib:            /usr/lib/urxvt/perl/
 urxvt*perl-ext-common:        default,matcher

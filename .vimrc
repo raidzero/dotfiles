@@ -16,6 +16,7 @@ set incsearch
 set guioptions -=m 
 set guioptions -=T
 set guioptions -=r
+set guioptions -=L
 set guifont=Liberation\ Mono\ for\ Powerline\ 10 
 set mouse=a
 

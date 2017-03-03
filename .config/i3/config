@@ -196,6 +196,10 @@ bindsym $mod+Shift+Control+8 move container to workspace number 18
 bindsym $mod+Shift+Control+9 move container to workspace number 19
 bindsym $mod+Shift+Control+0 move container to workspace number 20
 
+# divvy emulation for floating windows
+bindsym Control+Mod1+Right exec --no-startup-id ~/bin/divvy half-right
+bindsym Control+Mod1+Left exec --no-startup-id ~/bin/divvy half-left
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)

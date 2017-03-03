@@ -7,6 +7,7 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
+#~/Projects/polybar/polybar -c ~/.config/polybar/native top &
 polybar -c ~/.config/polybar/native top &
 
 echo "Bars launched..."

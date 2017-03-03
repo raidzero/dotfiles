@@ -5,9 +5,9 @@ dropbox start &
 sh ~/.fehbg & # set background
 ~/.config/i3/polybar.sh &
 urxvt -name urxvt_scratchpad -title ScratchPad &
+xautolock -locker ~/.config/i3/lockscreen -time 5 &
 
 #xfce daemons
-/usr/lib/x86_64-linux-gnu/xfce4/xfconf/xfconfd & # respect xfce settings
 xfsettingsd &
 xfce4-power-manager &
 xfce4-volumed &

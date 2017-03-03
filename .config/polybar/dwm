@@ -46,7 +46,7 @@ font-3 = FontAwesome:pixelsize=10;2
 
 font-4 = DejaVu Sans:fontformat=truetype:size=10:antialias=false;1
 
-modules-left = i3
+modules-left = ewmh
 modules-center = xwindow
 modules-right = cpu memory filesystem wlan battery volume date
 
@@ -68,6 +68,9 @@ mount-0 = /
 label-mounted =  %percentage_used%%
 label-unmounted =  not mounted
 label-mounted-underline = ${colors.primary}
+
+[module/ewmh]
+type = internal/xworkspaces
 
 [module/i3]
 type = internal/i3
