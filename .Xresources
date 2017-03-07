@@ -3,6 +3,8 @@ Xft.hintstyle: hintfull
 Xft.antialias: rgba 
 Xft.rgba: rgb
 
+Xcursor.theme: DMZ-Black
+Xcursor.size: 16
 
 #define r_bg   #000000
 #define r_fg   #aaaaaa

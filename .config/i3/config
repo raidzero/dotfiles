@@ -255,7 +255,6 @@ mode "move" {
 # power menu
 set $sysmenu " [l]ock [p]oweroff [r]eboot [s]leep "
 bindsym $mod+XF86PowerOff     mode $sysmenu
-bindsym XF86PowerOff     mode $sysmenu
 bindsym $mod+Scroll_Lock	  mode $sysmenu
 
 mode $sysmenu {

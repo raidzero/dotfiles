@@ -83,7 +83,7 @@ URxvt*shading: 15
 urxvt_scratchpad*depth: 32
 urxvt_scratchpad*buffered: true
 urxvt_scratchpad*foreground: #ffffff
-urxvt_scratchpad*background: rgba:0000/0000/0000/d000
+urxvt_scratchpad*background: rgba:0000/0000/0000/d800
 urxvt_scratchpad*shading: 15
 
 URxvt*scrollBar:     false
