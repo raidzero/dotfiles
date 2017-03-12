@@ -34,11 +34,8 @@ Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintfull
 
-URxvt*font: xft:Inconsolata for Powerline:pixelsize=16:antialias=true
-URxvt*boldFont: xft:Inconsolata:style=Bold:pixelsize=16:antialias=true
-
-UXTerm*faceName: Inconsolata for Powerline
-UXTerm*faceSize: 12
+URxvt*font: xft:Ubuntu Mono derivative Powerline:pixelsize=16:antialias=true
+URxvt*boldFont: xft:Ubuntu Mono derivative Powerline:style=Bold:pixelsize=16:antialias=true
 
 ! to match gnome-terminal "Linux console" scheme
 ! 0-7 fg, 8-15 bg
@@ -76,21 +73,16 @@ UXTerm*faceSize: 12
 URxvt*depth: 32
 URxvt*buffered: true
 URxvt*foreground: #ffffff
-URxvt*background: rgba:0000/0000/0000/d800
+URxvt*background: rgba:0000/0000/0000/e500
 URxvt*shading: 15
 
-# scratchpad transparency
+! scratchpad transparency
 urxvt_scratchpad*depth: 32
 urxvt_scratchpad*buffered: true
 urxvt_scratchpad*foreground: #ffffff
-urxvt_scratchpad*background: rgba:0000/0000/0000/d800
+urxvt_scratchpad*background: rgba:0000/0000/0000/e500
 urxvt_scratchpad*shading: 15
 
 URxvt*scrollBar:     false
 
 *.keysym.C-k:    echo -ne '\\033c'\n
-
-urxvt*perl-lib:            /usr/lib/urxvt/perl/
-urxvt*perl-ext-common:        default,matcher
-urxvt*urlLauncher:        /usr/bin/chromium
-urxvt*matcher.button:        1

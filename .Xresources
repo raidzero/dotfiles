@@ -6,14 +6,14 @@ Xft.rgba: rgb
 Xcursor.theme: DMZ-Black
 Xcursor.size: 16
 
-#define r_bg   #000000
+#define r_bg   #e5000000
 #define r_fg   #aaaaaa
 #define r_hlfg #ffffff
 
 ! States: bg, fg, bgalt, hlbg, hlfg
 rofi.color-enabled: true
-rofi.color-normal: r_bg,r_fg,#000000,r_bg,r_hlfg
-rofi.color-urgent: r_bg,#ffffff,#000000,r_bg,r_hlfg
+rofi.color-normal: r_bg,r_fg,r_bg,r_bg,r_hlfg
+rofi.color-urgent: r_bg,#ffffff,r_bg,r_bg,r_hlfg
 rofi.color-active: r_bg,r_fg,#ffffff,r_bg,#ffffff
 ! states: background, border
 rofi.color-window: r_bg,#ffffff

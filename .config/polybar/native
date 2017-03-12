@@ -8,7 +8,7 @@
 ;=====================================================
 
 [colors]
-background = #d8000000
+background = #e5000000
 foreground = #ffffff
 primary = #00ff54
 ;primary = #ff00ff

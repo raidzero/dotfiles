@@ -3,6 +3,7 @@
 alias cls="echo -ne '\033c'"
 
 alias wifishow="nmcli dev wifi"
+alias ranger="python3 /usr/bin/ranger"
 
 export PATH="$PATH:/opt/jdk1.8.0_91/bin"
 export PATH="$PATH:~/bin:~/bin/food"
