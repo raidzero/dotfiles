@@ -152,9 +152,9 @@ bindsym $mod+Control+9 workspace number 19
 bindsym $mod+Control+0 workspace number 20
 
 # blackwidow volume keys
-bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master playback toggle
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ 
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- 
+bindsym XF86AudioMute exec --no-startup-id amixer sset Master playback toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+ 
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%- 
 
 # blackwidow macro keys
   # switch workspace
@@ -253,7 +253,7 @@ mode "move" {
 }
 
 # power menu
-set $sysmenu " [l]ock [p]oweroff [r]eboot [s]leep "
+set $sysmenu " [l]ock [p]oweroff [r]eboot [s]leep "	
 bindsym $mod+XF86PowerOff     mode $sysmenu
 bindsym $mod+Scroll_Lock	  mode $sysmenu
 
@@ -261,7 +261,7 @@ mode $sysmenu {
 	bindsym l		  exec ~/.config/i3/lockscreen; mode default
 	bindsym p         exec sudo shutdown -P now
     bindsym r         exec sudo reboot
-    bindsym s		  exec "~/.config/i3/lockscreen & sudo pm-suspend"; mode default
+    bindsym s		  exec "~/.config/i3/lockscreen & sudo systemctl suspend"; mode default
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
@@ -277,6 +277,10 @@ client.background       #ffffff
 for_window [class="Xfce4-taskmanager"] floating enable
 for_window [class="Galculator"] floating enable
 for_window [class="Pavucontrol"] floating enable
+
+# android studio windows
+for_window [class="jetbrains-studio" title="^Android Virtual Device Manager$"] floating enable, border normal
+for_window [title="^Android Emulator - .*$"] floating enable, border normal
 
 # hangouts: never float, never sticky, no border, always on workspace 5
 for_window [title="^Google Hangouts.*$" window_role="app"] floating disable, sticky disable, border 1pixel, move to workspace $workspace5

@@ -6,6 +6,9 @@ sh ~/.fehbg & # set background
 urxvt -name urxvt_scratchpad -title ScratchPad &
 xautolock -locker ~/.config/i3/lockscreen -time 5 &
 
+# chrome app hider
+~/.config/i3/musicwatcher.py &
+
 # fix keybaord shortcuts
 setxkbmap -model chromebook_m_ralt -layout us &
 

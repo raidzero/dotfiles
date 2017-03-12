@@ -11,7 +11,6 @@
 background = #d8000000
 foreground = #ffffff
 primary = #00ff54
-;primary = #ff00ff
 alert = #bd2c40
 
 [bar/top]
@@ -24,7 +23,7 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 1
+line-size = 0
 line-color = ${colors.primary}
 
 border-size = 0
@@ -46,9 +45,10 @@ font-3 = FontAwesome:pixelsize=10;2
 
 font-4 = DejaVu Sans:fontformat=truetype:size=10;1
 
-modules-left = i3
-modules-center = xwindow
-modules-right = cpu memory filesystem volume date
+#modules-left = cpu memory filesystem volume date 
+modules-left = dateTime dateDate volume filesystem memory cpu 
+modules-center = ewmh
+modules-right = 
 
 tray-position = right
 tray-padding = 5
@@ -69,52 +69,26 @@ label-mounted =  %percentage_used%%
 label-unmounted =  not mounted
 label-mounted-underline = ${colors.primary}
 
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-fuzzy-match = false
+[module/ewmh]
+type = internal/xworkspaces
+enable-scroll = false
 
-ws-icon-0 = 1:term;
-ws-icon-1 = 2:code;
-ws-icon-2 = 3:www;
-ws-icon-3 = 4:ssh;
-ws-icon-4 = 5:chat;
-ws-icon-5 = 6;
-ws-icon-6 = 
-ws-icon-7 = 
-ws-icon-8 = 
-ws-icon-9 = 10:game;
+label-active = 
+label-active-foreground = ${colors.foreground}
+label-active-padding = 1
 
-ws-icon-default = 
+label-occupied = 
+label-occupied-foreground = ${colors.foreground}
+label-occupied-padding = 1
 
-label-mode-padding = 1
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
-
-; focused = Active workspace on focused monitor
-label-focused = %{T3}%index% %{T4}%icon%
-label-focused-background = ${colors.primary}
-label-focused-foreground = #000000
-label-focused-underline = ${colors.primary}
-label-focused-padding = 1
-
-; unfocused = Inactive workspace on any monitor
-label-unfocused = %{T3}%index% %{T4}%icon%
-label-unfocused-padding = 1
-
-; visible = Active workspace on unfocused monitor
-label-visible = %{T3}%index% %{T4}%icon%
-label-visible-background = $colors.background}
-label-visible-underline = ${colors.primary}
-label-visible-padding = 1
-
-; urgent = Workspace with urgency hint set
-label-urgent = %{T3}%index% %{T4}%icon%
-label-urgent-underline = ${colors.alert}
-label-urgent-background = ${colors.alert}
+label-urgent = 
+label-urgent-foreground = ${colors.alert}
 label-urgent-padding = 1
+
+label-empty = 
+label-empy-foreground = ${colors.primary}
+label-empty-padding = 1
+
 
 [module/cpu]
 type = internal/cpu
@@ -146,18 +120,21 @@ format-disconnected = <label-disconnected>
 format-disconnected-underline = ${colors.alert}
 label-disconnected =  Disconnected
 
-[module/date]
+[module/dateTime]
 type = internal/date
 interval = 5
 
-date =
-date-alt = " %a, %b %d %Y"
+time =  %H:%M %p
 
-time =  %l:%M %p
+label = %time% 
 
-format-underline = ${colors.primary}
+[module/dateDate]
+type = internal/date
+interval = 5
 
-label = %date% %time%
+date =  %a, %b %d %Y
+
+label =  %date%
 
 [module/volume]
 type = internal/volume

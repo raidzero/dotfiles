@@ -13,6 +13,8 @@ set showcmd
 set hlsearch
 set incsearch
 
+syntax enable
+
 set guioptions -=m 
 set guioptions -=T
 set guioptions -=r
