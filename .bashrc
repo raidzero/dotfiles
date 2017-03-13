@@ -38,18 +38,10 @@ eval `dircolors -b "$HOME/.dir_colors"`
 #    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 #fi
 
-_shorten ()
-{
-    local PRE= NAME="$1" LENGTH="$2";
-    [[ "$NAME" != "${NAME#$HOME/}" || -z "${NAME#$HOME}" ]] &&
-        PRE+='~' NAME="${NAME#$HOME}" LENGTH=$[LENGTH-1];
-    ((${#NAME}>$LENGTH)) && NAME="…${NAME:$[${#NAME}-LENGTH+4]}";
-    echo "$PRE$NAME"
-}
 
 PROMPT_USER="\033[32m\]\u\033[00m\]"
 PROMPT_HOST="\033[32m\]\h\033[00m\]"
-PROMPT_PWD='\033[1;36m\]$(_shorten "$PWD" 20)\033[00m\]'
+PROMPT_PWD='\033[1;36m\]$(~/dotfiles/bin/shortenPath.sh "$PWD" 20)\033[00m\]'
 PROMPT_TIME="\033[36m\]\@\033[00m\]"
 
  PS1="┌─[$PROMPT_USER on $PROMPT_HOST in $PROMPT_PWD at $PROMPT_TIME]╼\n└──╼ "
