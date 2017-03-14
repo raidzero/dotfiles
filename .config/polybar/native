@@ -48,7 +48,7 @@ font-4 = DejaVu Sans:fontformat=truetype:size=10;1
 
 modules-left = i3
 modules-center = xwindow
-modules-right = cpu memory filesystem volume date
+modules-right = cpu memory filesystem wlan battery volume backlight date
 
 tray-position = right
 tray-padding = 5
@@ -162,11 +162,27 @@ label = %date% %time%
 [module/volume]
 type = internal/volume
 
-label-volume = " %percentage%%"
+speaker-mixer = Speaker
+headphone-mixer = Headphone
+headphone-id = 17
+
+format-volume = <ramp-volume> <label-volume>
+format-muted = <ramp-volume> <label-muted>
+
+format-volume-underline = ${colors.primary}
+format-muted-underline = ${colors.primary}
+
+label-volume = "%percentage%%"
+label-muted = "0%"
 label-volume-foreground = ${root.foreground}
-label-volume-underline = ${colors.primary}
-label-muted =  0%
 label-muted-underline = ${colors.primary}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+ramp-headphones-0 = 
+ramp-headphones-1 = 
 
 [module/battery]
 poll-interval = 2
@@ -215,6 +231,24 @@ format-warn-underline = ${colors.alert}
 label = "%temperature%"
 label-warn = %temperature%
 label-warn-foreground = ${colors.alert}
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+
+format = <ramp> <label>
+format-underline = ${colors.primary}
+
+; Available tokens:
+;   %percentage% (default)
+label = %percentage%%
+
+; Only applies if <ramp> is used
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
 
 [settings]
 screenchange-reload = true

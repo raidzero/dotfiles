@@ -156,6 +156,12 @@ bindsym XF86AudioMute exec --no-startup-id amixer sset Master playback toggle
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+ 
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%- 
 
+# brightness keys
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+bindsym XF86KbdBrightnessUp exec --no-startup-id ~/.config/i3/kb-light.py +
+bindsym XF86KbdBrightnessDown exec --no-startup-id ~/.config/i3/kb-light.py -
+
 # blackwidow macro keys
   # switch workspace
 bindsym XF86Tools workspace $workspace1
@@ -253,7 +259,7 @@ mode "move" {
 }
 
 # power menu
-set $sysmenu " [l]ock [p]oweroff [r]eboot [s]leep "	
+set $sysmenu " [l]ock [p]oweroff [r]eboot [h]ibernate [s]leep "	
 bindsym $mod+XF86PowerOff     mode $sysmenu
 bindsym $mod+Scroll_Lock	  mode $sysmenu
 
@@ -261,7 +267,8 @@ mode $sysmenu {
 	bindsym l		  exec ~/.config/i3/lockscreen; mode default
 	bindsym p         exec sudo shutdown -P now
     bindsym r         exec sudo reboot
-    bindsym s		  exec "~/.config/i3/lockscreen & sudo systemctl suspend"; mode default
+    bindsym s		  exec "~/.config/i3/lockscreen & sleep 1 && sudo systemctl suspend"; mode default
+    bindsym h		  exec "~/.config/i3/lockscreen & sleep 1 && sudo systemctl hibernate"; mode default
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }

@@ -33,6 +33,7 @@ Xft.antialias:  true
 Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintfull
+Xft.dpi: 96
 
 URxvt*font: xft:Ubuntu Mono derivative Powerline:pixelsize=16:antialias=true
 URxvt*boldFont: xft:Ubuntu Mono derivative Powerline:style=Bold:pixelsize=16:antialias=true
@@ -71,17 +72,11 @@ URxvt*boldFont: xft:Ubuntu Mono derivative Powerline:style=Bold:pixelsize=16:ant
 *.color15 : #FFFFFF
 
 URxvt*depth: 32
-URxvt*buffered: true
+URxvt*buffered: false
 URxvt*foreground: #ffffff
 URxvt*background: rgba:0000/0000/0000/e500
-URxvt*shading: 15
-
-! scratchpad transparency
-urxvt_scratchpad*depth: 32
-urxvt_scratchpad*buffered: true
-urxvt_scratchpad*foreground: #ffffff
-urxvt_scratchpad*background: rgba:0000/0000/0000/e500
-urxvt_scratchpad*shading: 15
+URxvt.transparent: false
+!URxvt*shading: 10
 
 URxvt*scrollBar:     false
 

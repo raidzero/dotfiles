@@ -2,6 +2,7 @@ Xft.hinting: true
 Xft.hintstyle: hintfull 
 Xft.antialias: rgba 
 Xft.rgba: rgb
+Xft.dpi: 96
 
 Xcursor.theme: DMZ-Black
 Xcursor.size: 16
