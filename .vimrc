@@ -33,6 +33,8 @@ let mapleader = ','
 noremap <tab> gt
 noremap <c-tab> gT
 
+au FileType c setl sw=2 sts=2 et
+
 " comment the current line for various file types
 augroup comments
 	"autocmd!
