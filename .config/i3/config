@@ -20,12 +20,15 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id urxvtc
+bindsym $mod+Shift+Return exec --no-startup-id urxvtc -name urxvt_floating
+
+#bindsym $mod+Return exec --no-startup-id ~/Downloads/AUR/st-neonwave-git/src/st-neonwave/st
 
 # kill focused window 
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run -nb '#000000' -nf '#ffffff' -sb '#00ff54' -sf '#000000' -fn 'Inconsolata-11'
+bindsym $mod+d exec --no-startup-id dmenu_run -nb '#000000' -nf '#ffffff' -sb '#ff00ff' -sf '#000000' -fn 'Inconsolata-11'
 
 # metroid hack launcher
 bindsym $mod+z exec --no-startup-id ~/bin/metroid.sh
@@ -57,16 +60,13 @@ bindsym $mod+Shift+y fullscreen disable; floating disable; sticky disable
 # rename current workspace
 bindsym $mod+n exec --no-startup-id ~/.config/i3/renamews.sh
 
+# google search
+bindsym $mod+g exec --no-startup-id ~/.config/i3/google_search.sh
+
 # show rofi in window mode
 bindsym $mod+Tab exec --no-startup-id rofi -hide-scrollbar -show window
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-
-# alternatively, you can use the cursor keys:
+#change focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -117,10 +117,13 @@ bindsym $mod+a focus parent
 bindsym $mod+b focus child
 
 # keys to switch beween eDP1 and HDMI
+bindsym $mod+l exec --no-startup-id xrandr --output HDMI --left-of --output eDP1 --auto
 bindsym $mod+o exec --no-startup-id xrandr --output HDMI1 --auto --output eDP1 --off
 bindsym $mod+p exec --no-startup-id xrandr --output HDMI1 --off --output eDP1 --auto
 bindsym $mod+Shift+w exec --no-startup-id sh ~/.fehbg
 
+# switch to vt 2
+bindsym Mod1+XF86Forward exec --no-startup-id sudo chvt 2
 set $workspace1 "1:term"
 set $workspace2 "2:code"
 set $workspace3 "3:www"
@@ -157,8 +160,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%- 
 
 # brightness keys
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 bindsym XF86KbdBrightnessUp exec --no-startup-id ~/.config/i3/kb-light.py +
 bindsym XF86KbdBrightnessDown exec --no-startup-id ~/.config/i3/kb-light.py -
 
@@ -208,8 +211,10 @@ bindsym Control+Mod1+Left exec --no-startup-id ~/bin/divvy half-left
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the restart shortcut. Do you really want to restart i3?' -b 'Yes, restart i3' 'i3-msg restart'"
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -273,6 +278,10 @@ mode $sysmenu {
     bindsym Escape    mode "default"
 }
 
+bindsym $mod+period			gaps inner all plus 5
+bindsym $mod+Shift+period	gaps inner all set 10
+bindsym $mod+Shift+comma	gaps inner all set 0
+
 client.focused          #444444 #000000 #ffffff #2e9ef4   #444444
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
@@ -295,11 +304,32 @@ for_window [title="^Google Hangouts.*$" window_role="app"] floating disable, sti
 # scratchpad terminal
 for_window [instance="urxvt_scratchpad"] move scratchpad; scratchpad show; move position 15px 15px; resize set 1000px 500px; move scratchpad
 
+# floating termina
+for_window [instance="urxvt_floating"] floating enable
+
+# steam stuff
+for_window [class="^Steam$"] move to workspace $workspace0
+for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [title="^Steam Keyboard$"] floating enable
+
 # 1 pixel decoration on new windows
 new_window 1pixel
+
+# gaps
+gaps inner 10
+smart_gaps on
 
 # never any borders on edge of screen
 hide_edge_borders both
 
 #Startup programs
 exec --no-startup-id ~/.config/i3/autostart.sh
+

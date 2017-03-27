@@ -1,10 +1,15 @@
 ~/Projects/idled/idled &
+~/Downloads/xss-lock/xss-lock ~/.config/i3/lockscreen & 
+
 urxvtd &
-compton -b --config ~/.config/compton/compton.conf &
+#compton -b --config ~/.config/compton/compton.conf &
 dropbox start &
 sh ~/.fehbg & # set background
 ~/.config/i3/polybar.sh &
 urxvt -name urxvt_scratchpad -title ScratchPad &
+
+# touchpad gestures!
+libinput-gestures-setup start
 
 # chrome app hider
 ~/.config/i3/musicwatcher.sh &

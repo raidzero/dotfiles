@@ -10,4 +10,7 @@ else
 	RES=1080
 fi
 
-/home/raidzero/Downloads/i3lock-lixxia/i3lock -i /home/raidzero/wallpapers/lockscreen-$RES.png -c '#000000' -o '#ffffff' -w '#ff0000' -l '#00ff54' -e
+# i3lock not already running?
+if [ ! $(ps -ef | grep i3lock | grep -v lock) ]; then
+	~/Downloads/i3lock-lixxia/i3lock -l '#ffffff' -i /home/raidzero/wallpapers/trust_the_computer-$RES.png -e
+fi

@@ -38,38 +38,43 @@ Xft.dpi: 96
 URxvt*font: xft:Ubuntu Mono derivative Powerline:pixelsize=16
 URxvt*boldFont: xft:Ubuntu Mono derivative Powerline:style=Bold:pixelsize=16
 
-! to match gnome-terminal "Linux console" scheme
-! 0-7 fg, 8-15 bg
-! black bg: 40m, fg: 30
-*.color0  : #000000
-*.color8  : #555555
-! red bg: 41m; fg: 31
-*.color1  : #ff0054
-*.color9  : #FF5555
+! special
+*.foreground:   #666699
+*.background:   #000000
+*.cursorColor:  #666699
 
-! green bg :42m; fg: 32
-*.color2  : #00ff54
-*.color10 : #00ff54
+! black
+*.color0:       #1c1c1c
+*.color8:       #00d7ff
 
-! yellow bg: 43m; fg: 33
-*.color3  : #00b040
-*.color11 : #00dd44
+! red
+*.color1:       #ff00ff
+*.color9:       #d700ff
 
-! blue bg: 44m; fg: 34
-*.color4  : #00a030
-*.color12 : #00cc33
+! green
+*.color2:       #00afaf
+*.color10:      #00afd7
 
-! magenta bg: 45m; fg:35
-*.color5  : #00AA54
-*.color13 : #00CC54
+! yellow
+*.color3:       #0087af
+*.color11:      #5f5fff
 
-! cyan bg: 46m; fg: 36
-*.color6  : #00AAAA
-*.color14 : #00ffc3
+! blue
+*.color4:       #5f5faf
+*.color12:      #ff5fff
 
-! white bg: 47; fg: 37
-*.color7  : #AAAAAA
-*.color15 : #FFFFFF
+! magenta
+*.color5:       #d75fff
+*.color13:      #00d7ff
+
+! cyan
+*.color6:       #00afff
+*.color14:      #00ffff
+
+! white
+*.color7:       #808080
+*.color15:      #ccffff
+
 
 URxvt*depth: 32
 URxvt*buffered: false

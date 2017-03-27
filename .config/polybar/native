@@ -10,8 +10,8 @@
 [colors]
 background = #e5000000
 foreground = #ffffff
-primary = #00ff54
-;primary = #ff00ff
+;primary = #00ff54
+primary = #00ffff
 alert = #bd2c40
 
 [bar/top]
@@ -65,8 +65,8 @@ interval = 25
 
 mount-0 = /
 
-label-mounted =  %percentage_used%%
-label-unmounted =  not mounted
+label-mounted =  %percentage_used%%
+label-unmounted =  not mounted
 label-mounted-underline = ${colors.primary}
 
 [module/i3]
