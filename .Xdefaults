@@ -35,8 +35,14 @@ Xft.hinting:    true
 Xft.hintstyle:  hintfull
 Xft.dpi: 96
 
-URxvt*font: xft:Ubuntu Mono derivative Powerline:pixelsize=16
-URxvt*boldFont: xft:Ubuntu Mono derivative Powerline:style=Bold:pixelsize=16
+! only use 16 pt point font on laptop
+#ifdef SRVR_chromebook
+	URxvt*font: xft:Ubuntu Mono derivative Powerline:pixelsize=16
+	URxvt*boldFont: xft:Ubuntu Mono derivative Powerline:style=Bold:pixelsize=16
+#else
+	URxvt*font: xft:Ubuntu Mono derivative Powerline:pixelsize=15
+	URxvt*boldFont: xft:Ubuntu Mono derivative Powerline:style=Bold:pixelsize=15
+#endif
 URxvt.allow_bold: true
 
 ! special
