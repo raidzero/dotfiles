@@ -48,7 +48,7 @@ font-4 = DejaVu Sans:fontformat=truetype:size=10;1
 
 modules-left = i3
 modules-center = xwindow
-modules-right = cpu memory filesystem wlan battery volume backlight date
+modules-right = cpu memory filesystem volume date
 
 tray-position = right
 tray-padding = 5
