@@ -16,7 +16,7 @@ function mkcd() {
 }
 
 function gpush() {
-	BRANCH=`git branch | sed 's/^\* *//'`
+	BRANCH=`git branch | grep \* | sed 's/^\* *//'`
 	git push origin "$BRANCH"
 }
 
