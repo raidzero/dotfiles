@@ -1,5 +1,5 @@
 ~/Projects/idled/idled &
-~/Downloads/xss-lock/xss-lock ~/.config/i3/lockscreen & 
+redshift &
 
 urxvtd &
 #compton -b --config ~/.config/compton/compton.conf &

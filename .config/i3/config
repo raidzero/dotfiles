@@ -272,8 +272,8 @@ mode $sysmenu {
 	bindsym l		  exec ~/.config/i3/lockscreen; mode default
 	bindsym p         exec sudo shutdown -P now
     bindsym r         exec sudo reboot
-    bindsym s		  exec "~/.config/i3/lockscreen & sleep 1 && sudo systemctl suspend"; mode default
-    bindsym h		  exec "~/.config/i3/lockscreen & sleep 1 && sudo systemctl hibernate"; mode default
+    bindsym s		  exec "sudo systemctl suspend"; mode default
+    bindsym h		  exec "sudo systemctl hibernate"; mode default
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }

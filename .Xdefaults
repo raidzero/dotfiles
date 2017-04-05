@@ -37,6 +37,7 @@ Xft.dpi: 96
 
 URxvt*font: xft:Ubuntu Mono derivative Powerline:pixelsize=16
 URxvt*boldFont: xft:Ubuntu Mono derivative Powerline:style=Bold:pixelsize=16
+URxvt.allow_bold: true
 
 ! special
 *.foreground:   #666699
@@ -80,8 +81,8 @@ URxvt*depth: 32
 URxvt*buffered: false
 URxvt*foreground: #ffffff
 URxvt*background: rgba:0000/0000/0000/e500
-URxvt.transparent: false
-!URxvt*shading: 10
+URxvt.transparent: true
+URxvt*shading: 15
 
 ! scratchpad transparency
 urxvt_scratchpad*depth: 32

@@ -27,11 +27,18 @@ function gpush() {
 
 function title() {
 	[ -z $1 ] && TITLE=$DEFAULT_TERM_TITLE || TITLE="$DEFAULT_TERM_TITLE - $1"
-	PROMPT_COMMAND='_update_ps1; echo -ne "\033]0;'"[$TITLE]"'\007"'
+	PROMPT_COMMAND='echo -ne "\033]0;'"[$TITLE]"'\007"'
 }
 
 function _update_ps1() {
     PS1="$(~/Downloads/powerline-shell/powerline-shell.py $? 2> /dev/null)"
+}
+
+function userram() {
+	for USER in $(ps haux | awk '{print $1}' | sort -u)
+	do
+		ps haux | awk -v user=$USER '$1 ~ user { sum += $4} END { print user, sum; }'
+	done
 }
 
 eval `dircolors -b "$HOME/.dir_colors"`
