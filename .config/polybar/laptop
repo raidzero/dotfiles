@@ -8,14 +8,12 @@
 ;=====================================================
 
 [colors]
-;background = #e5000000
+background = #e5000000
 foreground = #ffffff
 ;primary = #00ff54
 
-background = ${xrdb:color0}
-primary =${xrdb:color7}
 
-;primary = #ff00ff
+primary = #00ffff
 alert = #bd2c40
 
 [bar/top]
