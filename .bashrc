@@ -7,6 +7,7 @@ alias getTz="curl -s https://timezoneapi.io/api/ip/?`curl -s icanhazip.com` | jq
 
 export PATH="$PATH:/opt/jdk1.8.0_91/bin"
 export PATH="$PATH:~/bin:~/bin/food"
+export PATH="$PATH:~/dotfiles/bin"
 export PATH="$PATH:~/Android/Sdk/tools:~/Android/Sdk/platform-tools"
 
 DEFAULT_TERM_TITLE="#!"
@@ -29,6 +30,13 @@ function _update_ps1() {
     PS1="$(~/Downloads/powerline-shell/powerline-shell.py $? 2> /dev/null)"
 }
 
+function get_git_branch() {
+	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+	if [ ! -z "$BRANCH" ]; then
+		echo " ($BRANCH)"
+	fi
+}
+
 function userram() {
 	for USER in $(ps haux | awk '{print $1}' | sort -u)
 	do
@@ -41,6 +49,7 @@ eval `dircolors -b "$HOME/.dir_colors"`
 PROMPT_USER="\033[32m\]\u\033[00m\]"
 PROMPT_HOST="\033[32m\]\h\033[00m\]"
 PROMPT_PWD='\033[1;36m\]$(~/dotfiles/bin/shortenPath.sh "$PWD" 20)\033[00m\]'
+PROMPT_BRANCH='\033[1;31m\]$(get_git_branch)\033[00m\]'
 PROMPT_TIME="\033[36m\]\@\033[00m\]"
 
- PS1="┌─[$PROMPT_USER on $PROMPT_HOST in $PROMPT_PWD at $PROMPT_TIME]╼\n└──╼ "
+ PS1="┌─[$PROMPT_USER on $PROMPT_HOST in $PROMPT_PWD$PROMPT_BRANCH at $PROMPT_TIME]╼\n└──╼ "

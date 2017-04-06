@@ -25,13 +25,16 @@ set mouse=a
 let g:gitgutter_sign_column_always = 1
 
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
 let g:airline_theme='surarken'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 
 let mapleader = ','
 
 noremap <tab> gt
-noremap <c-tab> gT
+noremap <s-tab> gT
 
 au FileType c setl sw=2 sts=2 et
 
