@@ -19,7 +19,7 @@ def kb_light_set(delta):
         kbd_backlight.SetBrightness(current)
 
     # Return current backlight level percentage
-    return 100 * current / maximum
+    return "%d%%" % int(100 * current / maximum)
 
 if __name__ == '__main__':
     if len(argv[1:]) == 1:
@@ -29,6 +29,8 @@ if __name__ == '__main__':
         elif argv[1] == "--down" or argv[1] == "-":
             # ./kb-light.py (-|--down) to decrement
             print(kb_light_set(-5))
+        elif argv[1] == "--get":
+            print(kb_light_set(0))
         else:
             print("Unknown argument:", argv[1])
     else:

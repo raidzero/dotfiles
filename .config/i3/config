@@ -26,6 +26,7 @@ bindsym $mod+Shift+Return exec --no-startup-id urxvtc -name urxvt_floating
 
 # kill focused window 
 bindsym $mod+Shift+q kill
+bindsym $mod+Shift+x kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run -nb '#000000' -nf '#ffffff' -sb '#ff00ff' -sf '#000000' -fn 'Inconsolata-11'
@@ -155,15 +156,15 @@ bindsym $mod+Control+9 workspace number 19
 bindsym $mod+Control+0 workspace number 20
 
 # blackwidow volume keys
-bindsym XF86AudioMute exec --no-startup-id amixer sset Master playback toggle
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+ 
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%- 
+bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/volume.sh mute
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/volume.sh up 
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/volume.sh down
 
 # brightness keys
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
-bindsym XF86KbdBrightnessUp exec --no-startup-id ~/.config/i3/kb-light.py +
-bindsym XF86KbdBrightnessDown exec --no-startup-id ~/.config/i3/kb-light.py -
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/backlight.sh up
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/backlight.sh down
+bindsym XF86KbdBrightnessUp exec --no-startup-id ~/.config/i3/kb-backlight.sh up
+bindsym XF86KbdBrightnessDown exec --no-startup-id ~/.config/i3/kb-backlight.sh down
 
 # blackwidow macro keys
   # switch workspace
