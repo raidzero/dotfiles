@@ -153,7 +153,7 @@ interval = 5
 date =
 date-alt = " %a, %b %d %Y"
 
-time =  %l:%M %p
+time =  %I:%M %p
 
 format-underline = ${colors.primary}
 
@@ -161,10 +161,6 @@ label = %date% %time%
 
 [module/volume]
 type = internal/volume
-
-speaker-mixer = Speaker
-headphone-mixer = Headphone
-headphone-id = 17
 
 format-volume = <ramp-volume> <label-volume>
 format-muted = <ramp-volume> <label-muted>
@@ -180,9 +176,6 @@ label-muted-underline = ${colors.primary}
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
-
-ramp-headphones-0 = 
-ramp-headphones-1 = 
 
 [module/battery]
 poll-interval = 2

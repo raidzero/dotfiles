@@ -7,6 +7,7 @@ alias getTz="curl -s https://timezoneapi.io/api/ip/?`curl -s icanhazip.com` | jq
 
 export PATH="$PATH:/opt/jdk1.8.0_91/bin"
 export PATH="$PATH:~/bin:~/bin/food"
+export PATH="$PATH:~/dotfiles/bin"
 export PATH="$PATH:~/Android/Sdk/tools:~/Android/Sdk/platform-tools"
 
 DEFAULT_TERM_TITLE="#!"

@@ -1,13 +1,13 @@
 Xft.hinting: true 
 Xft.hintstyle: hintfull 
 Xft.antialias: rgba 
-Xft.rgba: rgb
+Xft.rgba: none
 Xft.dpi: 96
 
 Xcursor.theme: DMZ-Black
 Xcursor.size: 16
 
-#define r_bg   #e5000000
+#define r_bg   #000000
 #define r_fg   #aaaaaa
 #define r_hlfg #ffffff
 
@@ -27,8 +27,67 @@ rofi.padding: 5
 
 rofi.yoffset: -300
 rofi.opacity: 80
-rofi.fake-transparency: false
+rofi.fake-transparency: true
 rofi.location: 0
 rofi.width: 30
 rofi.font: Inconsolata 12
 rofi.lines: 10
+
+! special
+*.foreground:   #666699
+*.background:   #000000
+*.cursorColor:  #cc00ff
+
+! black
+*.color0:       #1c1c1c
+*.color8:       #00d7ff
+
+! red
+*.color1:       #ff00ff
+*.color9:       #d700ff
+
+! green
+*.color2:       #00afaf
+*.color10:      #00afd7
+
+! yellow
+*.color3:       #0087af
+*.color11:      #5f5fff
+
+! blue
+*.color4:       #5f5faf
+*.color12:      #ff5fff
+
+! magenta
+*.color5:       #d75fff
+*.color13:      #00d7ff
+
+! cyan
+*.color6:       #00afff
+*.color14:      #00ffff
+
+! white
+*.color7:       #808080
+*.color15:      #ccffff
+
+! only use 16 pt point font on laptop
+#define urxvt_font_size 15
+#ifdef SRVR_chromebook
+	#define urxvt_font_size 16
+#endif
+
+URxvt*font: xft:Ubuntu Mono:pixelsize=urxvt_font_size
+URxvt*boldFont: xft:Ubuntu Mono:style=Bold:pixelsize=urxvt_font_size
+
+URxvt*allow_bold: true
+URxvt*letterSpace: -2
+URxvt*depth: 32
+URxvt*buffered: false
+URxvt*foreground: #ffffff
+URxvt*background: #000000
+URxvt.transparent: true
+URxvt*shading: 15
+
+URxvt*scrollBar:     false
+
+*.keysym.C-k:    echo -ne '\\033c'\n
