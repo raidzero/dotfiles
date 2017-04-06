@@ -35,7 +35,7 @@ fi
 VOL=`amixer get Master | grep \% | cut -d '[' -f2 | tr -d '[]' | head -n 1`
 
 if [ -z "$MUTED" ]; then
-	notify-send "Volume set to $VOL."
+	notify-send -r 1000 "Volume set to $VOL."
 else 
-	notify-send "Sound muted."
+	notify-send -r 1000 "Sound muted."
 fi
