@@ -70,17 +70,19 @@ rofi.lines: 10
 *.color7:       #808080
 *.color15:      #ccffff
 
-! only use 16 pt point font on laptop
+# laptop needs different font settings
 #define urxvt_font_size 15
+#define urxvt_letter_spacing -2
 #ifdef SRVR_chromebook
-	#define urxvt_font_size 16
+	#define urxvt_font_size 17
+	#define urxvt_letter_spacing -1
 #endif
 
 URxvt*font: xft:Ubuntu Mono:pixelsize=urxvt_font_size
 URxvt*boldFont: xft:Ubuntu Mono:style=Bold:pixelsize=urxvt_font_size
 
 URxvt*allow_bold: true
-URxvt*letterSpace: -2
+URxvt*letterSpace: urxvt_letter_spacing
 URxvt*depth: 32
 URxvt*buffered: false
 URxvt*foreground: #ffffff

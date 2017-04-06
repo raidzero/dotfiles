@@ -67,8 +67,8 @@ interval = 25
 
 mount-0 = /
 
-label-mounted =  %percentage_used%%
-label-unmounted =  not mounted
+label-mounted =  %percentage_used%%
+label-unmounted =  not mounted
 label-mounted-underline = ${colors.primary}
 
 [module/i3]
@@ -202,6 +202,24 @@ animation-charging-4 = 
 animation-charging-framerate = 750
 
 time-format = %H:%M
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+
+format = <ramp> <label>
+format-underline = ${colors.primary}
+
+; Available tokens:
+;   %percentage% (default)
+label = %percentage%%
+
+; Only applies if <ramp> is used
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
 
 [module/temperature]
 type = internal/temperature
