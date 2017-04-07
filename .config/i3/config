@@ -117,6 +117,9 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+b focus child
 
+# send to scratchpad 
+bindsym $mod+Shift+grave move window to scratchpad
+
 # keys to switch beween eDP1 and HDMI
 bindsym $mod+l exec --no-startup-id xrandr --output HDMI --left-of --output eDP1 --auto
 bindsym $mod+o exec --no-startup-id xrandr --output HDMI1 --auto --output eDP1 --off

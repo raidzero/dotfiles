@@ -46,10 +46,10 @@ function userram() {
 
 eval `dircolors -b "$HOME/.dir_colors"`
 
-PROMPT_USER="\033[32m\]\u\033[00m\]"
-PROMPT_HOST="\033[32m\]\h\033[00m\]"
-PROMPT_PWD='\033[1;36m\]$(~/dotfiles/bin/shortenPath.sh "$PWD" 20)\033[00m\]'
-PROMPT_BRANCH='\033[1;31m\]$(get_git_branch)\033[00m\]'
-PROMPT_TIME="\033[36m\]\@\033[00m\]"
+PROMPT_USER='\e[32m\u\e[00m'
+PROMPT_HOST='\e[32m\h\e[00m'
+PROMPT_PWD='\e[1;36m$(~/dotfiles/bin/shortenPath.sh "$PWD" 20)\e[00m'
+PROMPT_BRANCH='\e[1;31m$(get_git_branch)\e[00m'
+PROMPT_TIME='\e[36m\@\e[00m'
 
  PS1="┌─[$PROMPT_USER on $PROMPT_HOST in $PROMPT_PWD$PROMPT_BRANCH at $PROMPT_TIME]╼\n└──╼ "

@@ -34,7 +34,7 @@ rofi.font: Inconsolata 12
 rofi.lines: 10
 
 ! special
-*.foreground:   #666699
+*.foreground:   #ffffff
 *.background:   #000000
 *.cursorColor:  #cc00ff
 
@@ -70,12 +70,13 @@ rofi.lines: 10
 *.color7:       #808080
 *.color15:      #ccffff
 
-# laptop needs different font settings
-#define urxvt_font_size 15
-#define urxvt_letter_spacing -2
+! laptop needs different font settings
 #ifdef SRVR_chromebook
 	#define urxvt_font_size 17
 	#define urxvt_letter_spacing -1
+#else
+	#define urxvt_font_size 15
+	#define urxvt_letter_spacing -2
 #endif
 
 URxvt*font: xft:Ubuntu Mono:pixelsize=urxvt_font_size
@@ -85,8 +86,8 @@ URxvt*allow_bold: true
 URxvt*letterSpace: urxvt_letter_spacing
 URxvt*depth: 32
 URxvt*buffered: false
-URxvt*foreground: #ffffff
-URxvt*background: #000000
+!URxvt*foreground: #ffffff
+!URxvt*background: #000000
 URxvt.transparent: true
 URxvt*shading: 15
 

@@ -52,8 +52,9 @@ modules-left = i3
 modules-center = xwindow
 modules-right = cpu memory filesystem wlan battery volume backlight date
 
-tray-position = right
-tray-padding = 5
+; no tray
+;tray-position = right
+;tray-padding = 5
 
 [module/xwindow]
 type = internal/xwindow

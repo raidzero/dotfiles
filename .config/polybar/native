@@ -50,8 +50,9 @@ modules-left = i3
 modules-center = xwindow
 modules-right = cpu memory filesystem volume date
 
-tray-position = right
-tray-padding = 5
+; no tray
+tray-position = 
+tray-padding = 
 
 [module/xwindow]
 type = internal/xwindow

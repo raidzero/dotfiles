@@ -1,7 +1,6 @@
+urxvtd &
 ~/Projects/idled/idled &
 redshift -c ~/.config/redshift.conf &
-
-urxvtd &
 
 dropbox start &
 
@@ -9,7 +8,7 @@ sh ~/.fehbg & # set background
 
 ~/.config/i3/polybar.sh &
 
-urxvt -name urxvt_scratchpad -title ScratchPad &
+urxvtc -name urxvt_scratchpad -title ScratchPad &
 
 # chrome app hider
 ~/.config/i3/musicwatcher.sh &
