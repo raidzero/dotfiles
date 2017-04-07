@@ -1,5 +1,5 @@
 ~/Projects/idled/idled &
-redshift &
+redshift -c ~/.config/redshift.conf &
 
 urxvtd &
 
