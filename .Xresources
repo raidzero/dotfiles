@@ -70,27 +70,38 @@ rofi.lines: 10
 *.color7:       #808080
 *.color15:      #ccffff
 
-! laptop needs different font settings
+! define different font params for various machines
 #ifdef SRVR_chromebook
 	#define urxvt_font_size 17
+	#define urxvt_letter_spacing -1
+#elif defined SRVR_baseline
+	#define urxvt_font_size 16
 	#define urxvt_letter_spacing -1
 #else
 	#define urxvt_font_size 15
 	#define urxvt_letter_spacing -2
 #endif
 
-URxvt*font: xft:Ubuntu Mono:pixelsize=urxvt_font_size
-URxvt*boldFont: xft:Ubuntu Mono:style=Bold:pixelsize=urxvt_font_size
+! make it easy to change font in one place
+#define urxvt_font xft:Ubuntu Mono:pixelsize=urxvt_font_size
+#define urxvt_bold_font urxvt_font:style=Bold
+
+URxvt*font: urxvt_font
+URxvt*boldFont: urxvt_bold_font
 
 URxvt*allow_bold: true
 URxvt*letterSpace: urxvt_letter_spacing
+
+! desktop uses true transparency, others dont
+#ifdef SRVR_baseline
 URxvt*depth: 32
+URxvt*background: rgba:0000/0000/0000/d800
+URxvt*transparent: false
+URxvt*buffered: true
+#else
 URxvt*buffered: false
-!URxvt*foreground: #ffffff
-!URxvt*background: #000000
 URxvt.transparent: true
 URxvt*shading: 15
+#endif
 
 URxvt*scrollBar:     false
-
-*.keysym.C-k:    echo -ne '\\033c'\n
