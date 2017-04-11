@@ -1,0 +1,3 @@
+#!/bin/bash
+
+curl -s https://timezoneapi.io/api/ip/?`curl -s icanhazip.com` | jq '.data .timezone .id'

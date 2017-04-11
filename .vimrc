@@ -3,6 +3,7 @@ colorscheme grb256
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
+set keymodel-=stopsel
 set laststatus=2
 set updatetime=250
 set shiftwidth=4

@@ -2,16 +2,17 @@
 # shortens a path like vim airline 
 
 DISP=$1
+LENGTH=$2
+
 SHORTENED=$DISP
 
-if [[ $DISP =~ ^$HOME ]]; then 
+if [[ $SHORTENED =~ ^$HOME ]]; then 
 	SHORTENED=`echo "$SHORTENED" | sed 's_'"$HOME"'_~_'`
-	
 fi
 
 LEN=`echo "$SHORTENED" | wc -c`
 
-if [ "$LEN" -ge 25 ]; then
+if [ "$LEN" -ge $LENGTH ]; then
 	SHORTENED=`echo "$SHORTENED" | sed 's_/\(.\)[^/]*_/\1_g'`
 	SHORTENED=${SHORTENED::-1}
 	SHORTENED="$SHORTENED`echo $DISP | awk -F '/' '{print$NF}'`"

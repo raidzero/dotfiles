@@ -1,0 +1,9 @@
+#!/bin/bash
+
+export WLC_REPEAT_DELAY=300
+
+export XKB_DEFAULT_OPTIONS=caps:super
+export XKB_DEFAULT_MODEL=chromebook_m_ralt
+export XKB_DEFAULT_LAYOUT=us
+
+sway
