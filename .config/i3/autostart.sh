@@ -1,6 +1,5 @@
 urxvtd &
 ~/Projects/idled/idled &
-redshift -c ~/.config/redshift.conf &
 
 dropbox start &
 

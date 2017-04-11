@@ -1,9 +1,8 @@
 #!/bin/bash
 
-alias cls="echo -ne '\033c'"
+source $HOME/dotfiles/functions.sh
 
-alias ranger="python3 /usr/bin/ranger"
-alias getTz="curl -s https://timezoneapi.io/api/ip/?`curl -s icanhazip.com` | jq '.data .timezone .id'"
+alias cls="echo -ne '\033c'"
 
 export PATH="$PATH:/opt/jdk1.8.0_91/bin"
 export PATH="$PATH:~/bin:~/bin/food"
@@ -12,44 +11,12 @@ export PATH="$PATH:~/Android/Sdk/tools:~/Android/Sdk/platform-tools"
 
 DEFAULT_TERM_TITLE="#!"
 
-function mkcd() {
-	mkdir $1; cd $1
-}
-
-function gpush() {
-	BRANCH=`git branch | grep \* | sed 's/^\* *//'`
-	git push origin "$BRANCH"
-}
-
-function title() {
-	[ -z $1 ] && TITLE=$DEFAULT_TERM_TITLE || TITLE="$DEFAULT_TERM_TITLE - $1"
-	PROMPT_COMMAND='echo -ne "\033]0;'"[$TITLE]"'\007"'
-}
-
-function _update_ps1() {
-    PS1="$(~/Downloads/powerline-shell/powerline-shell.py $? 2> /dev/null)"
-}
-
-function get_git_branch() {
-	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-	if [ ! -z "$BRANCH" ]; then
-		echo " ($BRANCH)"
-	fi
-}
-
-function userram() {
-	for USER in $(ps haux | awk '{print $1}' | sort -u)
-	do
-		ps haux | awk -v user=$USER '$1 ~ user { sum += $4} END { print user, sum; }'
-	done
-}
-
 eval `dircolors -b "$HOME/.dir_colors"`
 
 PROMPT_USER='\e[32m\u\e[00m'
 PROMPT_HOST='\e[32m\h\e[00m'
-PROMPT_PWD='\e[1;36m$(~/dotfiles/bin/shortenPath.sh "$PWD" 20)\e[00m'
+PROMPT_PWD='\e[1;36m$(~/dotfiles/bin/shortenPath.sh "$PWD" 30)\e[00m'
 PROMPT_BRANCH='\e[1;31m$(get_git_branch)\e[00m'
 PROMPT_TIME='\e[36m\@\e[00m'
 
- PS1="┌─[$PROMPT_USER on $PROMPT_HOST in $PROMPT_PWD$PROMPT_BRANCH at $PROMPT_TIME]╼\n└──╼ "
+PS1="┌─[$PROMPT_USER on $PROMPT_HOST in $PROMPT_PWD$PROMPT_BRANCH at $PROMPT_TIME]╼\n└──╼ "

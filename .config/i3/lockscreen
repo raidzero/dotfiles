@@ -11,6 +11,10 @@ else
 fi
 
 # i3lock not already running?
-if [ ! $(ps -ef | grep i3lock | grep -v lock) ]; then
-	~/Downloads/i3lock-lixxia/i3lock -l '#ffffff' -i /home/raidzero/wallpapers/trust_the_computer-$RES.png -e
+if [ ! $(ps -ef | grep -E "(i3|sway)lock" | grep -v lock) ]; then
+	if [[ ! $(pidof sway) ]]; then
+		~/Downloads/i3lock-lixxia/i3lock -l '#ffffff' -i /home/raidzero/wallpapers/trust_the_computer-$RES.png -e
+	else
+		swaylock -i /home/raidzero/wallpapers/trust_the_computer-$RES.png
+	fi
 fi

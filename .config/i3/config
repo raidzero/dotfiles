@@ -58,6 +58,8 @@ bindsym $mod+y fullscreen disable; floating enable; resize set 640 480; sticky e
 # undo that
 bindsym $mod+Shift+y fullscreen disable; floating disable; sticky disable
 
+# unhide a hidden window
+bindsym $mod+Shift+u exec --no-startup-id ~/.config/i3/unhide.sh
 # rename current workspace
 bindsym $mod+n exec --no-startup-id ~/.config/i3/renamews.sh
 
