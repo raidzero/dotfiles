@@ -1,6 +1,5 @@
 urxvtd &
 ~/Projects/idled/idled &
-redshift -c ~/.config/redshift.conf &
 
 dropbox start &
 
@@ -8,7 +7,6 @@ sh ~/.fehbg & # set background
 
 ~/.config/i3/polybar.sh &
 
-urxvtc -name urxvt_scratchpad -title ScratchPad &
 
 # chrome app hider
 ~/.config/i3/musicwatcher.sh &
@@ -20,3 +18,12 @@ if [ "$HOSTNAME" == "chromebook" ]; then
 	# fix keyboard shortcuts
 	setxkbmap -model chromebook_m_ralt -layout us &
 fi
+
+if [ "$HOSTNAME" == "baseline" ]; then
+	# nvidia driver needs compton for tearing...
+	compton --config ~/.config/compton/compton.conf &
+fi
+
+sleep 5 && redshift -c ~/.config/redshift.conf &
+
+urxvtc -name urxvt_scratchpad -title ScratchPad &
