@@ -20,17 +20,13 @@ set guioptions -=m
 set guioptions -=T
 set guioptions -=r
 set guioptions -=L
-set guifont=Liberation\ Mono\ for\ Powerline\ 10 
 set mouse=a
 
 let g:gitgutter_sign_column_always = 1
 
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 let g:airline_theme='surarken'
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
 
 let mapleader = ','
 
@@ -44,6 +40,7 @@ augroup comments
 	"autocmd!
 	autocmd FileType python,bash,sh nnoremap <leader>c I#<esc>
 	autocmd FileType php,c,javascript nnoremap <leader>c I//<esc>
+	autocmd FileType vim nnoremap <leader>c I"<esc>
 augroup END
 
 " quickly edit and source vimrc
