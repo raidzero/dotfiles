@@ -21,6 +21,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec --no-startup-id urxvtc
 bindsym $mod+Shift+Return exec --no-startup-id urxvtc -name urxvt_floating
+bindsym $mod+Shift+p exec --no-startup-id urxvtc -name urxvt_python -e python
 
 #bindsym $mod+Return exec --no-startup-id ~/Downloads/AUR/st-neonwave-git/src/st-neonwave/st
 
@@ -185,8 +186,13 @@ bindsym Shift+XF86Launch6 move container to workspace $workspace3
 bindsym Shift+XF86Launch7 move container to workspace $workspace4
 bindsym Shift+XF86Launch8 move container to workspace $workspace5
 
-bindsym $mod+bracketleft workspace prev
-bindsym $mod+bracketright workspace next
+# move to next/prev workspace on output
+bindsym $mod+bracketleft workspace prev_on_output
+bindsym $mod+bracketright workspace next_on_output
+
+# move workspace to next/prev output - why is exec i3-msg needed? 
+bindsym $mod+Shift+bracketleft exec i3-msg move workspace to output left 
+bindsym $mod+Shift+bracketright exec i3-msg move workspace to output right 
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -310,8 +316,9 @@ for_window [title="^Google Hangouts.*$" window_role="app"] floating disable, sti
 # scratchpad terminal
 for_window [instance="urxvt_scratchpad"] move scratchpad; scratchpad show; move position 15px 15px; resize set 1000px 500px; move scratchpad
 
-# floating termina
+# floating terminal
 for_window [instance="urxvt_floating"] floating enable
+for_window [instance="urxvt_python"] floating enable; move position 15px 15px
 
 # steam stuff
 for_window [class="^Steam$"] move to workspace $workspace0

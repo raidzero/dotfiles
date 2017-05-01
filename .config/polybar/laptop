@@ -17,7 +17,7 @@ primary = #00ffff
 alert = #bd2c40
 
 [bar/top]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR}
 width = 100%
 height = 15
 radius = 0.0
@@ -41,9 +41,9 @@ module-margin-right = 1
 font-0 = DejaVu Sans:fontformat=truetype:size=8;2
 font-1 = FontAwesome:pixelsize=10;2
 
-; superscript - for ws index
+; superscript - for ws index - %{T3}
 font-2 = Abyssinica SIL:fontformat=truetype:size=6;-2
-; subscript icons
+; subscript icons - %{T4}
 font-3 = FontAwesome:pixelsize=10;2
 
 font-4 = DejaVu Sans:fontformat=truetype:size=10;1
@@ -78,6 +78,7 @@ format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 fuzzy-match = false
+pin-workspaces = true
 
 ws-icon-0 = 1:term;
 ws-icon-1 = 2:code;
@@ -105,12 +106,15 @@ label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %{T3}%index% %{T4}%icon%
+label-unfocused-background = ${colors.background}
+label-unfocused-underline = ${colors.background}
 label-unfocused-padding = 1
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %{T3}%index% %{T4}%icon%
-label-visible-background = $colors.background}
-label-visible-underline = ${colors.primary}
+label-visible-background = #ffffff
+label-visible-foreground = #000000
+label-visible-underline = #ffffff
 label-visible-padding = 1
 
 ; urgent = Workspace with urgency hint set
