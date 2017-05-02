@@ -1,7 +1,7 @@
 urxvtd &
 ~/Projects/idled/idled &
 
-dropbox start &
+python2 /usr/bin/dropbox start &
 
 sh ~/.fehbg & # set background
 
