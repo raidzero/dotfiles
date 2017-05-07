@@ -75,7 +75,7 @@ rofi.lines: 10
 	#define urxvt_font_size 15
 	#define urxvt_letter_spacing -1
 #elif defined SRVR_baseline
-	#define urxvt_font_size 16
+	#define urxvt_font_size 14
 	#define urxvt_letter_spacing -1
 #else
 	#define urxvt_font_size 13
