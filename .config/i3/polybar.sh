@@ -13,7 +13,7 @@ else
 fi
 
 # run the same bar on all monitors
-for OUTPUT in $(xrandr | grep connected | cut -d ' ' -f1); do
+for OUTPUT in $(xrandr | grep " connected" | cut -d ' ' -f1); do
 	echo "MONITOR=$OUTPUT polybar -c $CONFIG top &"
 	MONITOR="$OUTPUT" polybar -c $CONFIG top & 
 	echo "$CONFIG launched on $OUTPUT"
