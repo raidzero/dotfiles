@@ -40,11 +40,9 @@ font-0 = DejaVu Sans:fontformat=truetype:size=8;2
 font-1 = FontAwesome:pixelsize=10;2
 
 ; superscript - for ws index
-font-2 = Abyssinica SIL:fontformat=truetype:size=6;-2
+font-2 = Abyssinica SIL:fontformat=truetype:size=6;-4
 ; subscript icons
 font-3 = FontAwesome:pixelsize=10;2
-
-font-4 = DejaVu Sans:fontformat=truetype:size=10;1
 
 modules-left = i3
 modules-center = xwindow
@@ -55,6 +53,7 @@ tray-position =
 tray-padding = 
 
 [module/xwindow]
+pin-output = true
 type = internal/xwindow
 format-underline = #00000000
 format-foreground = ${colors.primary}
@@ -96,24 +95,24 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %{T3}%index% %{T4}%icon%
+label-focused = %{T3}%index% %icon%
 label-focused-background = ${colors.primary}
 label-focused-foreground = #000000
 label-focused-underline = ${colors.primary}
 label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %{T3}%index% %{T4}%icon%
+label-unfocused = %{T3}%index% %icon%
 label-unfocused-padding = 1
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %{T3}%index% %{T4}%icon%
+label-visible = %{T3}%index% %icon%
 label-visible-background = ${colors.background}
 label-visible-underline = ${colors.primary}
 label-visible-padding = 1
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %{T3}%index% %{T4}%icon%
+label-urgent = %{T3}%index% %icon%
 label-urgent-underline = ${colors.alert}
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
