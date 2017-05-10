@@ -39,7 +39,7 @@ au FileType c,cpp setl sw=2 sts=2 et
 augroup comments
 	"autocmd!
 	autocmd FileType python,bash,sh nnoremap <leader>c I#<esc>
-	autocmd FileType php,c,javascript nnoremap <leader>c I//<esc>
+	autocmd FileType php,c,cpp,javascript nnoremap <leader>c I//<esc>
 	autocmd FileType vim nnoremap <leader>c I"<esc>
 augroup END
 

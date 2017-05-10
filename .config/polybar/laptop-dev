@@ -55,6 +55,7 @@ modules-right = cpu memory filesystem wlan battery volume backlight date
 ;tray-padding = 5
 
 [module/xwindow]
+pin-output = true 
 type = internal/xwindow
 format-underline = #00000000
 format-foreground = ${colors.primary}
@@ -96,7 +97,7 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %{T3}%index% %{T4}%icon%
+label-focused = %{T3}%index% %{T4}%icon% %output%
 label-focused-background = ${colors.primary}
 label-focused-foreground = #000000
 label-focused-underline = ${colors.primary}

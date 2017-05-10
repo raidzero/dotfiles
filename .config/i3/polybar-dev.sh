@@ -7,7 +7,7 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 if [ "$HOSTNAME" == "chromebook" ] || [ "$HOSTNAME" == "archvm" ]; then
-	CONFIG=~/.config/polybar/laptop
+	CONFIG=~/.config/polybar/laptop-dev
 else
 	CONFIG=~/.config/polybar/native
 fi
