@@ -290,6 +290,19 @@ mode $sysmenu {
     bindsym Escape    mode "default"
 }
 
+set $randrmenu " xrandr: [jkl] [Enter|ESC] "
+bindsym $mod+Shift+d			mode $randrmenu
+
+mode $randrmenu {
+	bindsym j		exec --no-startup-id echo "j" >> /tmp/randrmode
+	bindsym k		exec --no-startup-id echo "k" >> /tmp/randrmode
+	bindsym l		exec --no-startup-id echo "l" >> /tmp/randrmode
+
+	bindsym Escape	mode default; exec --no-startup-id rm /tmp/randrmode
+	bindsym Return	mode default; exec --no-startup-id ~/dotfiles/bin/xrandr.sh
+}
+
+
 bindsym $mod+period			gaps inner all plus 5
 bindsym $mod+Shift+period	gaps inner all set 10
 bindsym $mod+Shift+comma	gaps inner all set 0
