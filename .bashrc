@@ -7,6 +7,7 @@ alias cls="echo -ne '\033c'"
 alias luksOpen="cryptsetup luksOpen"
 alias luksClose="cryptsetup luksClose"
 alias grep='grep --color'
+alias pcp="rsync -ah --progress"
 
 export PATH="$PATH:/opt/jdk1.8.0_91/bin"
 export PATH="$PATH:~/bin:~/bin/food"

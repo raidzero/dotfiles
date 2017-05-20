@@ -16,10 +16,6 @@ set incsearch
 
 syntax enable
 
-set guioptions -=m 
-set guioptions -=T
-set guioptions -=r
-set guioptions -=L
 set mouse=a
 
 let g:gitgutter_sign_column_always = 1

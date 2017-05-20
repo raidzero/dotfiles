@@ -1,3 +1,7 @@
+xrdb -merge ~/.Xresources
+setxkbmap -option 'caps:super'
+xset r rate 300 30
+
 urxvtd &
 ~/Projects/idled/idled &
 
@@ -11,13 +15,15 @@ sh ~/.fehbg & # set background
 ~/.config/i3/musicwatcher.sh &
 
 if [ "$HOSTNAME" == "chromebook" ]; then
-	# touchpad gestures!
-	libinput-gestures-setup start &
 
 	# fix keyboard shortcuts
 	setxkbmap -model chromebook_m_ralt -layout us &
 fi
 
-sleep 5 && redshift -c ~/.config/redshift.conf &
+# touchpad gestures!
+libinput-gestures-setup start &
 
 urxvtc -name urxvt_scratchpad -title ScratchPad &
+
+sleep 10 # wait ten seconds? idk why but its needed
+pgrep redshift &> /dev/null || echo `date` > ~/.redshift.log && redshift -v -c ~/.config/redshift.conf &>> ~/.redshift.log &
