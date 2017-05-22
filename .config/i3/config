@@ -39,10 +39,10 @@ bindsym $mod+z exec --no-startup-id ~/bin/metroid.sh
 bindsym $mod+Escape exec --no-startup-id ~/.config/i3/lockscreen
 
 # screenshot (fullscreen)
-bindsym $mod+F5 exec --no-startup-id scrot ~/Pictures/screenshots/`date +%Y%m%d-%H%M%S`.png
+bindsym $mod+Print exec --no-startup-id scrot ~/Pictures/screenshots/`date +%Y%m%d-%H%M%S`.png
 
 # screenshot (selection)
-bindsym $mod+Shift+F5 exec --no-startup-id scrot -s ~/Pictures/screenshots/`date +%Y%m%d-%H%M%S`.png
+bindsym --release $mod+Shift+Print exec --no-startup-id scrot -s ~/Pictures/screenshots/`date +%Y%m%d-%H%M%S`.png
 
 # task manager
 bindsym $mod+BackSpace exec --no-startup-id xfce4-taskmanager
