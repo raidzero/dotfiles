@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 ## - this script uses i3 IPC to look for a google music window and pulls the name of the song and artist
 
@@ -10,10 +10,10 @@ def getSong(windowName):
 	m = re.search('(.*) *- *(.*) * - *Google Play Music$', windowName)
 	if m and m.group(1) and m.group(2):
 		print "♪ {} - {}".format(m.group(2), m.group(1))
+		sys.exit(0)
 	else:
 		print ""
-	
-	sys.exit(0)
+		sys.exit(1)
 
 # main
 i3 = i3ipc.Connection()
