@@ -12,7 +12,9 @@ ROMS=$(ls "$ROMPATH" | grep "\.zip$" | sed 's/\.zip//g')
 
 SELECTED=$(echo "$ROMS" | dmenu -i -nb '#000000' -nf '#ffffff' -sb '#ff00ff' -sf '#000000' -fn 'Inconsolata 11')
 
-echo "LAUNCHING:"
-ls -l "${ROMPATH}/${SELECTED}.zip"
+if [ -n "$SELECTED" ]; then
+	echo "LAUNCHING:"
+	ls -l "${ROMPATH}/${SELECTED}.zip"
 
-snes9x-gtk "${ROMPATH}/${SELECTED}.zip"
+	snes9x-gtk "${ROMPATH}/${SELECTED}.zip"
+fi
