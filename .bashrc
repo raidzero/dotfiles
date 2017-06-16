@@ -8,6 +8,7 @@ alias luksOpen="cryptsetup luksOpen"
 alias luksClose="cryptsetup luksClose"
 alias grep='grep --color'
 alias pcp="rsync -ah --progress"
+alias dropbox="python2 /usr/bin/dropbox"
 
 export PATH="$PATH:/opt/jdk1.8.0_91/bin"
 export PATH="$PATH:~/bin:~/bin/food"

@@ -12,7 +12,7 @@ sh ~/.fehbg & # set background
 ~/.config/i3/polybar.sh &
 
 # chrome app hider
-~/.config/i3/musicwatcher.sh &
+#~/.config/i3/musicwatcher.sh &
 
 if [ "$HOSTNAME" == "chromebook" ]; then
 
