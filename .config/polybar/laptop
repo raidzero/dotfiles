@@ -10,8 +10,6 @@
 [colors]
 background = #e5000000
 foreground = #ffffff
-;primary = #00ff54
-
 
 primary = #00ffff
 alert = #bd2c40
@@ -65,6 +63,7 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
+mount-1	= /home
 
 label-mounted =  %percentage_used%%
 label-unmounted =  not mounted
