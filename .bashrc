@@ -9,6 +9,7 @@ alias luksClose="cryptsetup luksClose"
 alias grep='grep --color'
 alias pcp="rsync -ah --progress"
 alias dropbox="python2 /usr/bin/dropbox"
+alias mplayer='mplayer -noborder'
 
 export PATH="$PATH:/opt/jdk1.8.0_91/bin"
 export PATH="$PATH:~/bin:~/bin/food"
@@ -16,6 +17,8 @@ export PATH="$PATH:~/dotfiles/bin"
 export PATH="$PATH:~/Android/Sdk/tools:~/Android/Sdk/platform-tools"
 
 export EDITOR=vim
+export SUDO_EDITOR=vim
+export VISUAL=vim
 
 DEFAULT_TERM_TITLE="#!"
 

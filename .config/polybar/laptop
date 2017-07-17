@@ -76,6 +76,7 @@ index-sort = true
 wrapping-scroll = false
 fuzzy-match = false
 pin-workspaces = true
+enable-scroll = false
 
 ws-icon-0 = 1:term;
 ws-icon-1 = 2:code;

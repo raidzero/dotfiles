@@ -1,4 +1,5 @@
 #!/bin/bash
+SNES=zsnes
 
 METROID=$1
 
@@ -16,5 +17,5 @@ if [ -n "$SELECTED" ]; then
 	echo "LAUNCHING:"
 	ls -l "${ROMPATH}/${SELECTED}.zip"
 
-	snes9x-gtk "${ROMPATH}/${SELECTED}.zip"
+	$SNES "${ROMPATH}/${SELECTED}.zip"
 fi
