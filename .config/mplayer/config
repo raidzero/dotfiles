@@ -1,2 +1,4 @@
 stop-xscreensaver=1
 vo=gl
+ao=pulse
+noborder=1
