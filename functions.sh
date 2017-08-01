@@ -13,7 +13,7 @@ function title() {
 }
 
 function get_git_branch() {
-	if [ -d .git ]; then 
+	if [ -d .git ]; then
 		BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
 
 		if [ ! -z "$BRANCH" ]; then
@@ -27,6 +27,24 @@ function userram() {
 	do
 		ps haux | awk -v user=$USER '$1 ~ user { sum += $4} END { print user, sum; }'
 	done
+}
+
+function luksMount() {
+	DEV=$1
+	NAME=$2
+
+	sudo luksOpen $DEV $NAME
+
+	if [ $? -eq 0 ]; then
+		[ ! -d /mnt/$NAME ] && mkdir /mnt/$NAME
+		sudo mount /dev/mapper/$NAME /mnt/$NAME
+	fi
+}
+
+function luksUmount() {
+	NAME=$1
+	sudo umount /mnt/$NAME
+	sudo luksClose /dev/mapper/$NAME
 }
 
 news() {
