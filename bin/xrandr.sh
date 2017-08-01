@@ -59,5 +59,5 @@ else
 fi
 
 
-~/.config/i3/polybar.sh
 sh ~/.fehbg
+~/.config/i3/polybar.sh
