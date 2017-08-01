@@ -14,4 +14,4 @@ case $CMD in
 		~/.config/i3/kb-light.py - ;;
 esac
 
-notify-send -r 1002 "Keyboard brightness: `~/.config/i3/kb-light.py --get`"
+dunstify -r 1002 "Keyboard brightness: `~/.config/i3/kb-light.py --get`"

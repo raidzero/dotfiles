@@ -14,4 +14,8 @@ case $CMD in
 		xbacklight -dec 5 ;;
 esac
 
-notify-send -r 1001 "LCD brightness: `xbacklight -get | sed 's/\.[0-9]*$/%/'`"
+CURRENT_BRIGHTNESS=$(xbacklight -get | sed 's/\.[0-9]*$//')
+dunstify -r 1001 "LCD brightness: ${CURRENT_BRIGHTNESS}%"
+
+
+cat /sys/class/backlight/intel_backlight/brightness > ~/.lcd-brightness

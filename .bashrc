@@ -15,6 +15,11 @@ export PATH="$PATH:~/bin:~/bin/food"
 export PATH="$PATH:~/dotfiles/bin"
 export PATH="$PATH:~/Android/Sdk/tools:~/Android/Sdk/platform-tools"
 
+export EDITOR=vim
+export SUDO_EDITOR=vim
+export VISUAL=vim
+export BROWSER=google-chrome-stable
+
 DEFAULT_TERM_TITLE="#!"
 
 eval `dircolors -b "$HOME/.dir_colors"`
