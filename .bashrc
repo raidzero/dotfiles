@@ -31,3 +31,4 @@ PROMPT_BRANCH='\e[1;31m$(get_git_branch)\e[00m'
 PROMPT_TIME='\e[36m\@\e[00m'
 
 PS1="┌─[$PROMPT_USER on $PROMPT_HOST in $PROMPT_PWD$PROMPT_BRANCH at $PROMPT_TIME]╼\n└──╼ "
+PROMPT_COMMAND='echo -en "\033]0;[$DEFAULT_TERM_TITLE] - $(~/dotfiles/bin/shortenPath.sh "$PWD" 30)\007"'

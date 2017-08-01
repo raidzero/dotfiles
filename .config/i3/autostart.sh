@@ -26,6 +26,8 @@ libinput-gestures-setup start &
 
 urxvtc -name urxvt_scratchpad -title ScratchPad &
 
+~/.config/i3/musicwatcher.sh &
+
 ~/.config/i3/polybar.sh &
 
 sleep 10 # wait ten seconds? idk why but its needed

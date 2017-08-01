@@ -63,6 +63,3 @@ nnoremap <leader>v' viw<esc>`a'<esc>`>a'<esc>
 " move current line down/up
 nnoremap <leader>- ddp
 nnoremap <leader>_ ddP
-
-
-

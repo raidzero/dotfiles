@@ -33,42 +33,13 @@ rofi.width: 30
 rofi.font: Inconsolata 12
 rofi.lines: 10
 
-! special
-*.foreground:   #ffffff
-*.background:   #000000
-*.cursorColor:  #cc00ff
+#define cyan_theme
 
-! black
-*.color0:       #1c1c1c
-*.color8:       #00d7ff
-
-! red
-*.color1:       #ff00ff
-*.color9:       #d700ff
-
-! green
-*.color2:       #00afaf
-*.color10:      #00afd7
-
-! yellow
-*.color3:       #0087af
-*.color11:      #5f5fff
-
-! blue
-*.color4:       #5f5faf
-*.color12:      #ff5fff
-
-! magenta
-*.color5:       #d75fff
-*.color13:      #00d7ff
-
-! cyan
-*.color6:       #00afff
-*.color14:      #00ffff
-
-! white
-*.color7:       #808080
-*.color15:      #ccffff
+#ifdef green_theme
+	#include "/home/raidzero/.Xresources-green"
+#else
+	#include "/home/raidzero/.Xresources-cyan"
+#endif
 
 ! define different font params for various machines
 #ifdef SRVR_chromebook
@@ -89,6 +60,7 @@ rofi.lines: 10
 #define urxvt_font xft:Hack:pixelsize=urxvt_font_size
 #define urxvt_bold_font urxvt_font:style=Bold
 
+URxvt*internalBorder: 10 
 URxvt*font: urxvt_font
 URxvt*boldFont: urxvt_bold_font
 

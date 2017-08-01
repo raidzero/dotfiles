@@ -318,6 +318,8 @@ client.background       #ffffff
 for_window [class="Xfce4-taskmanager"] floating enable
 for_window [class="Galculator"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="Sxiv"] floating enable
+for_window [class="feh"] floating enable
 
 # android studio windows
 for_window [class="jetbrains-studio" title="^Android Virtual Device Manager$"] floating enable, border normal

@@ -45,7 +45,7 @@ font-2 = Abyssinica SIL:fontformat=truetype:size=6;-2
 
 modules-left = i3 bspwm
 modules-center = xwindow
-modules-right = cpu memory filesystem wlan battery volume backlight date
+modules-right = cpu memory wlan battery volume backlight date
 
 ; no tray
 ;tray-position = right

@@ -15,7 +15,7 @@ fi
 # run the same bar on all monitors
 for OUTPUT in $(polybar -m | cut -d ':' -f1); do
 	echo "MONITOR=$OUTPUT polybar -c $CONFIG top &"
-	MONITOR="$OUTPUT" polybar -c $CONFIG top &
+	MONITOR="$OUTPUT" polybar -c $CONFIG top &>> ~/.polybar.log &
 	echo "$CONFIG launched on $OUTPUT"
 done
 

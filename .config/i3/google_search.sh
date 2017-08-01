@@ -7,7 +7,7 @@ if [ -n "${query}" ]; then
 	ID=`wmctrl -l | grep Chromium | cut -d' ' -f1`
 
 	if [ -z "$ID" ]; then
-		# no. switch to www workspace 
+		# no. switch to www workspace
 		i3-msg workspace '3:www'
 	else
 		# yes. focus it
@@ -15,5 +15,5 @@ if [ -n "${query}" ]; then
 	fi
 
 	# open a new google search with the query :)
-	chromium https://google.com/search?q="${query}"
+	$BROWSER https://google.com/search?q="${query}"
 fi
