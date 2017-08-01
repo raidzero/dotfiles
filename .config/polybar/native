@@ -44,7 +44,7 @@ font-2 = Abyssinica SIL:fontformat=truetype:size=6;-4
 ; subscript icons
 font-3 = FontAwesome:pixelsize=10;2
 
-modules-left = i3
+modules-left = i3 bspwm
 modules-center = xwindow
 modules-right = cpu memory filesystem volume date
 
@@ -116,6 +116,44 @@ label-urgent = %{T3}%index% %icon%
 label-urgent-underline = ${colors.alert}
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
+
+[module/bspwm]
+type = internal/bspwm
+pin-workspace = true
+enable-click = true
+fuzzy-match = false
+
+ws-icon-0 = I;
+ws-icon-1 = II;
+ws-icon-2 = III;
+ws-icon-3 = IV;
+ws-icon-4 = V;
+ws-icon-5 = VI;
+ws-icon-6 = VII;
+ws-icon-7 = VIII;
+ws-icon-8 = IX;
+ws-icon-9 = X;
+
+ws-icon-default = ${module/i3.ws-icon-default}
+
+; focused
+label-focused = ${module/i3.label-focused}
+label-focused-background = ${module/i3.label-focused-background}
+label-focused-foreground = ${module/i3.label-focused-foreground}
+label-focused-underline = ${module/i3.label-focused-underline}
+label-focused-padding = 1
+
+; unfocused
+label-dimmed = ${module/i3.label-unfocused}
+label-dimmed-padding = 1
+
+; occupied
+label-occupied = ${module/i3.label-unfocused}
+label-occupied-padding = 1
+
+; empty - nothing
+label-empty = 
+label-empty-padding = 0
 
 [module/cpu]
 type = internal/cpu
