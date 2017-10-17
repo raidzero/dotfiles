@@ -29,11 +29,14 @@ function userram() {
 	done
 }
 
+alias luksOpen="cryptsetup luksOpen"
+alias luksClose="cryptsetup luksClose"
+
 function luksMount() {
 	DEV=$1
 	NAME=$2
 
-	sudo luksOpen $DEV $NAME
+	sudo cryptsetup luksOpen $DEV $NAME
 
 	if [ $? -eq 0 ]; then
 		[ ! -d /mnt/$NAME ] && mkdir /mnt/$NAME
@@ -44,7 +47,7 @@ function luksMount() {
 function luksUmount() {
 	NAME=$1
 	sudo umount /mnt/$NAME
-	sudo luksClose /dev/mapper/$NAME
+	sudo cryptsetup luksClose /dev/mapper/$NAME
 }
 
 news() {

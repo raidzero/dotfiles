@@ -284,8 +284,8 @@ mode $sysmenu {
 	bindsym l		  exec ~/.config/i3/lockscreen; mode default
 	bindsym p         exec sudo shutdown -P now
     bindsym r         exec sudo reboot
-    bindsym s		  exec "sudo zzz"; mode default
-    bindsym h		  exec "sudo ZZZ"; mode default
+    bindsym s		  exec "sudo systemctl suspend"; mode default
+    bindsym h		  exec "sudo systemctl hibernate"; mode default
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
@@ -317,6 +317,7 @@ client.background       #ffffff
 # make float
 for_window [class="Xfce4-taskmanager"] floating enable
 for_window [class="Galculator"] floating enable
+for_window [class="Gsimplecal"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Sxiv"] floating enable
 for_window [class="feh"] floating enable
@@ -333,7 +334,7 @@ for_window [instance="urxvt_scratchpad"] move scratchpad; scratchpad show; move 
 
 # floating terminal
 for_window [instance="urxvt_floating"] floating enable
-for_window [instance="urxvt_python"] floating enable; move position 15px 15px
+for_window [instance="urxvt_python"] floating enable, resize set 500px 225px, move window to position 1410 846
 
 # steam stuff
 for_window [class="^Steam$"] move to workspace $workspace0

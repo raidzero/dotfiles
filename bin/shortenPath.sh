@@ -1,12 +1,12 @@
 #!/bin/bash
-# shortens a path like vim airline 
+# shortens a path like vim airline
 
 DISP=$1
 LENGTH=$2
 
 SHORTENED=$DISP
 
-if [[ $SHORTENED =~ ^$HOME ]]; then 
+if [[ $SHORTENED =~ ^$HOME ]]; then
 	SHORTENED=`echo "$SHORTENED" | sed 's_'"$HOME"'_~_'`
 fi
 
@@ -18,9 +18,10 @@ if [ "$LEN" -ge $LENGTH ]; then
 	SHORTENED="$SHORTENED`echo $DISP | awk -F '/' '{print$NF}'`"
 fi
 
+
 # print in red if not in a writable path
-if [ ! -w "$DISP" ]; then
-	echo -e "\033[1;31m${SHORTENED}"
-else	
+#if [ ! -w "$DISP" ]; then
+#	echo -e "\e[1;31m${SHORTENED}"
+#else
 	echo $SHORTENED
-fi
+#fi
