@@ -18,7 +18,7 @@ revert_usbguard_policy() {
   usbguard set-parameter InsertedDevicePolicy $POLICY_UNLOCKED
 }
 
-trap revert SIGHUP SIGINT SIGTERM
+trap revert_usbguard_policy SIGHUP SIGINT SIGTERM
 usbguard set-parameter InsertedDevicePolicy $POLICY_LOCKED
 
 # i3lock not already running?
