@@ -10,11 +10,24 @@ else
 	RES=1080
 fi
 
+# USB guard
+POLICY_UNLOCKED=apply-policy
+POLICY_LOCKED=reject
+
+revert_usbguard_policy() {
+  usbguard set-parameter InsertedDevicePolicy $POLICY_UNLOCKED
+}
+
+trap revert SIGHUP SIGINT SIGTERM
+usbguard set-parameter InsertedDevicePolicy $POLICY_LOCKED
+
 # i3lock not already running?
 if [ ! $(ps -ef | grep -E "(i3|sway)lock" | grep -v lock) ]; then
 	if [[ ! $(pidof sway) ]]; then
-		/home/raidzero/Downloads/i3lock-lixxia/i3lock -c '#000000' -l '#ffffff' -i /home/raidzero/wallpapers/trust_the_computer-$RES.png -e
+		/home/raidzero/Downloads/i3lock-lixxia/i3lock -c '#000000' -l '#ffffff' -i /home/raidzero/wallpapers/trust_the_computer-$RES.png -e -n
 	else
 		swaylock -i /home/raidzero/wallpapers/trust_the_computer-$RES.png
 	fi
 fi
+
+revert_usbguard_policy

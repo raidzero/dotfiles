@@ -36,11 +36,16 @@ function luksMount() {
 	DEV=$1
 	NAME=$2
 
-	sudo cryptsetup luksOpen $DEV $NAME
+	if [ -z "$DEV" ] || [ -z "$NAME" ]; then
+		echo "USAGE luksMount DEVICE (/dev/sda) NAME (/mnt/NAME)"
+	else
+		sudo cryptsetup luksOpen $DEV $NAME
 
-	if [ $? -eq 0 ]; then
-		[ ! -d /mnt/$NAME ] && mkdir /mnt/$NAME
-		sudo mount /dev/mapper/$NAME /mnt/$NAME
+		if [ $? -eq 0 ]; then
+			[ ! -d /mnt/$NAME ] && mkdir /mnt/$NAME
+			sudo mount /dev/mapper/$NAME /mnt/$NAME
+
+		fi
 	fi
 }
 
