@@ -65,7 +65,7 @@ bindsym $mod+Shift+u exec --no-startup-id ~/.config/i3/unhide.sh
 bindsym $mod+n exec --no-startup-id ~/.config/i3/renamews.sh
 
 # google search
-bindsym $mod+g exec --no-startup-id ~/.config/i3/google_search.sh
+bindsym $mod+Shift+g exec --no-startup-id ~/.config/i3/google_search.sh
 
 # show rofi in window mode
 bindsym $mod+Tab exec --no-startup-id rofi -hide-scrollbar -show window
@@ -76,11 +76,17 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+# change focus (vi)
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window (vi)
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -89,13 +95,13 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+g split h
 
 # split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+# enter fullscreen mode for the focused container (mod alt enter)
+bindsym $mod+Mod1+Return fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -123,10 +129,6 @@ bindsym $mod+b focus child
 # send to scratchpad 
 bindsym $mod+Shift+grave move window to scratchpad
 
-# keys to switch beween eDP1 and HDMI
-bindsym $mod+l exec --no-startup-id xrandr --output HDMI --left-of --output eDP1 --auto
-bindsym $mod+o exec --no-startup-id xrandr --output HDMI1 --auto --output eDP1 --off
-bindsym $mod+p exec --no-startup-id xrandr --output HDMI1 --off --output eDP1 --auto
 bindsym $mod+Shift+w exec --no-startup-id sh ~/.fehbg
 
 # switch to vt 2
@@ -233,15 +235,16 @@ bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed 
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-
+		
+		# vi mode
         # Pressing left will shrink the window’s width.
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -362,3 +365,29 @@ hide_edge_borders both
 #Startup programs
 exec --no-startup-id ~/.config/i3/autostart.sh
 
+## 60% keyboard modes ##
+# focus window
+#set $focusmenu "Focus Direction I/J/K/L"
+#bindsym $mod+f mode $focusmenu
+#mode $focusmenu {
+#	bindsym k focus up
+#	bindsym h focus left
+#	bindsym j focus down
+#	bindsym l focus right
+#
+#	bindsym Escape	mode default
+#	bindsym Return	mode default
+#}
+#
+## move window
+#set $movemenu "Move Window I/J/K/L"
+#bindsym $mod+m mode $movemenu
+#mode $movemenu {
+#	bindsym k move up
+#	bindsym h move left
+#	bindsym j move down
+#	bindsym l move right
+#
+#	bindsym Escape	mode default
+#	bindsym Return	mode default
+#}

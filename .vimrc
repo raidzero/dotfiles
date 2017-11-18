@@ -63,3 +63,16 @@ nnoremap <leader>v' viw<esc>`a'<esc>`>a'<esc>
 " move current line down/up
 nnoremap <leader>- ddp
 nnoremap <leader>_ ddP
+
+" finally try to break the habit of using arrow keys...
+" Disable Arrow keys in Escape mode
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+" Disable Arrow keys in Insert mode
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
