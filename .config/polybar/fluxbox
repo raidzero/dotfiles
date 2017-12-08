@@ -16,11 +16,11 @@ alert = #bd2c40
 
 [bar/top]
 monitor = ${env:MONITOR}
-width = 100%
+width = 25%
+offset-x = 75%
 height = 15
 radius = 0.0
 fixed-center = true
-enable-ipc=true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -44,8 +44,8 @@ font-1 = FontAwesome:pixelsize=10;2
 ; small superscript for ws index - T3 
 font-2 = Abyssinica SIL:fontformat=truetype:size=6;-2
 
-modules-left = i3 bspwm
-modules-center = xwindow
+modules-left = 
+modules-center = 
 modules-right = cpu memory wlan battery volume backlight date
 
 ; no tray
@@ -290,6 +290,26 @@ interval = 5
 exec = python ~/.config/polybar/gmusic.py	
 label = "%output:0:75:...%"
 format-underline = ${colors.primary}
+
+[module/ewmh]
+type = internal/xworkspaces
+enable-scroll = false
+
+label-active = 
+label-active-foreground = ${colors.primary}
+label-active-padding = 1
+
+label-occupied = 
+label-occupied-foreground = ${colors.foreground}
+label-occupied-padding = 1
+
+label-urgent = 
+label-urgent-foreground = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = 
+label-empy-foreground = ${colors.primary}
+label-empty-padding = 1
 
 [global/wm]
 margin-top = 0
