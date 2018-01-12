@@ -9,6 +9,7 @@ alias luksClose="cryptsetup luksClose"
 alias grep='grep --color'
 alias pcp="rsync -ah --progress"
 alias dropbox="python2 /usr/bin/dropbox"
+alias btc='curl -sSL https://api.coinbase.com/v1/prices/historical?limit=1 | grep -oE "[0-9]+\.[0-9]{2}" | sed "s/^/$/"'
 
 export PATH="$PATH:/opt/jdk1.8.0_91/bin"
 export PATH="$PATH:~/bin:~/bin/food"

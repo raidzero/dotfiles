@@ -7,13 +7,10 @@ xset r rate 300 30
 urxvtd &
 ~/Projects/idled/idled &
 
-python2 /usr/bin/dropbox start &
+dropbox start &
 
 sh ~/.fehbg & # set background
 
-
-# chrome app hider
-#~/.config/i3/musicwatcher.sh &
 
 if [ "$HOSTNAME" == "chromebook" ]; then
 
