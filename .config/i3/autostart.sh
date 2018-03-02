@@ -5,18 +5,14 @@ setxkbmap -option 'caps:super'
 xset r rate 300 30
 
 urxvtd &
-~/Projects/idled/idled &
+if [ "$HOSTNAME" == "xps" ]; then
+	~/Projects/idled/idled &
+	compton --config ~/.config/compton/compton.conf -b
+fi
 
-dropbox start &
+python2 /bin/dropbox start &
 
 sh ~/.fehbg & # set background
-
-
-if [ "$HOSTNAME" == "chromebook" ]; then
-
-	# fix keyboard shortcuts
-	setxkbmap -model chromebook_m_ralt -layout us &
-fi
 
 # touchpad gestures!
 libinput-gestures-setup start &

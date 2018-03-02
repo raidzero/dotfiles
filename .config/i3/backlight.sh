@@ -7,15 +7,36 @@ if [ -z "$CMD" ]; then
 	exit 1
 fi
 
+BRIGHTNESS_FILE=/sys/class/backlight/intel_backlight/brightness
+
+# detemrmine max brightness
+MAX_BRIGHTNESS=`cat /sys/class/backlight/intel_backlight/max_brightness`
+CURRENT_BRIGHTNESS=`cat $BRIGHTNESS_FILE`
+
+# we want do do 2.5% at a time so divide max by 40 to get steps
+let STEP=$MAX_BRIGHTNESS/40
+
 case $CMD in
 	up)
-		xbacklight -inc 5 ;;
+		let BRIGHTNESS=$CURRENT_BRIGHTNESS+$STEP
+		if [ $BRIGHTNESS -ge $MAX_BRIGHTNESS ]; then
+			BRIGHTNESS=$MAX_BRIGHTNESS
+		fi
+		;;
 	down)
-		xbacklight -dec 5 ;;
+		let BRIGHTNESS=$CURRENT_BRIGHTNESS-$STEP
+		if [ $BRIGHTNESS -le 0 ]; then
+			BRIGHTNESS=0
+		fi
+		;;
 esac
 
-CURRENT_BRIGHTNESS=$(xbacklight -get | sed 's/\.[0-9]*$//')
-dunstify -r 1001 "LCD brightness: ${CURRENT_BRIGHTNESS}%"
+sudo /home/raidzero/.config/i3/set_brightness.sh $BRIGHTNESS
+
+CURRENT_BRIGHTNESS_PERCENT=`echo "scale=2; ($BRIGHTNESS/$MAX_BRIGHTNESS)*100" | bc | sed 's/\.[0-9]*$//'`
+NOTIFY_STR="LCD brightness: ${CURRENT_BRIGHTNESS_PERCENT}%"
+dunstify -r 1001 "${NOTIFY_STR}"
+echo "$NOTIFY_STR"
 
 
 cat /sys/class/backlight/intel_backlight/brightness > ~/.lcd-brightness

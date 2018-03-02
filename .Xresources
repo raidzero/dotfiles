@@ -68,7 +68,12 @@ URxvt*allow_bold: true
 URxvt*letterSpace: urxvt_letter_spacing
 
 URxvt*buffered: false
-URxvt.transparent: true
-URxvt*shading: 10
 
+#ifdef SRVR_xps
+	URxvt*depth:32
+	URxvt*background:rgba:0000/0000/0000/ddcc
+#elif defined SRVR_baseline
+	URxvt.transparent: true
+	URxvt*shading: 10
+#endif
 URxvt*scrollBar:     false
