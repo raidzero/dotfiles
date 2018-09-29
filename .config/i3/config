@@ -333,7 +333,7 @@ for_window [class="jetbrains-studio" title="^Android Virtual Device Manager$"] f
 for_window [title="^Android Emulator - .*$"] floating enable, border normal
 
 # hangouts: never float, never sticky, no border, always on workspace 5
-for_window [title="^Google Hangouts.*$" window_role="app"] floating disable, sticky disable, border 1pixel, move to workspace $workspace5
+for_window [title="^Google Hangouts.*$" window_role="pop-up"] floating disable, sticky disable, border 1pixel, move to workspace $workspace5
 
 # scratchpad terminal
 for_window [instance="urxvt_scratchpad"] move scratchpad; scratchpad show; move position 15px 15px; resize set 1000px 500px; move scratchpad
@@ -354,6 +354,9 @@ for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
 for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
+
+# xdialog floats
+for_window [class="Xdialog"] floating enable
 
 # 1 pixel decoration on new windows
 new_window 1pixel

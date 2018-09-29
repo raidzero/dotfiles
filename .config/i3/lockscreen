@@ -10,6 +10,7 @@ else
 	RES=1080
 fi
 
+
 # i3lock not already running?
 if [ ! $(ps -ef | grep -E "(i3|sway)lock" | grep -v lock) ]; then
 	if [[ ! $(pidof sway) ]]; then
@@ -18,3 +19,5 @@ if [ ! $(ps -ef | grep -E "(i3|sway)lock" | grep -v lock) ]; then
 		swaylock -i /home/raidzero/wallpapers/trust_the_computer-$RES.png
 	fi
 fi
+
+#xset dpms force off
