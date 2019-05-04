@@ -1,0 +1,126 @@
+#!/bin/bash
+
+DEST="$1"
+BAR_HEIGHT_TOP="$2"
+BAR_HEIGHT_BOT="$3"
+
+RESOLUTION=$(xdpyinfo | grep dimensions | grep -oE ": *[0-9]+x[0-9]+" | grep -oE "[0-9]+x[0-9]+")
+MON_HEIGHT=${RESOLUTION#*x}
+MON_WIDTH=${RESOLUTION%x*}
+echo "RES: $MON_WIDTH x $MON_HEIGHT"
+
+if [ -z "$DEST" ]; then
+	echo "USAGE: $0 [location]"
+	echo -e "\nsupported locations: "
+	echo -e "\thalf-left, half-right"
+	echo -e "\tthird-left, third-middle, third-right"
+	echo -e "\tquarter-top-left, quarter-rop-right, quarter-bottom-left, quarter-bottom-right"
+	echo -e "\nTo make this useful, use a key shortcut for each command :)"
+	exit 1
+fi
+
+# set system info here
+NUM_MONITORS=1
+BAR_HEIGHT_TOP=15
+BAR_HEIGHT_BOT=0
+
+ACTIVE_MONITOR=1
+
+# get active window data
+#ACTIVE_WINDOW_DATA=`xwininfo -id $(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}')`
+
+# get the window's current position
+#X_POS=`echo "$ACTIVE_WINDOW_DATA" | grep "Absolute upper-left X" | awk '{print$4}'`
+#Y_POS=`echo "$ACTIVE_WINDOW_DATA" | grep "Absolute upper-left Y" | awk '{print$4}'`
+
+#echo "X: $X_POS Y: $Y_POS"
+
+# determine which monitor it's on
+#for i in `seq 0 $NUM_MONITORS`; do
+#	let MON_START=$MON_WIDTH*$i
+#
+#	if [ $X_POS -ge $MON_START ]; then
+#		ACTIVE_MONITOR=$i
+#	else
+#		break
+#	fi
+#done
+
+# it was 0-indexed, plus one
+#let ACTIVE_MONITOR+=1
+
+#echo "ACTIVE MONITOR: $ACTIVE_MONITOR"
+
+#if [ -z "$ACTIVE_MONITOR" ]; then
+#	echo "Unable to determine which monitor we are on. What a shame. Quitting"
+#	exit 1
+#fi
+
+let HALF_X_SIZE=$MON_WIDTH/2
+let HALF_Y_SIZE=$MON_HEIGHT/2
+let HALF_RIGHT_POS=($MON_WIDTH*$ACTIVE_MONITOR)-$HALF_X_SIZE
+let HALF_LEFT_POS=($MON_WIDTH*$ACTIVE_MONITOR)-$MON_WIDTH
+
+let THIRD_X_SIZE=$MON_WIDTH/3
+let THIRD_RIGHT_POS=($MON_WIDTH*$ACTIVE_MONITOR)-$THIRD_X_SIZE
+let THIRD_LEFT_POS=($MON_WIDTH*$ACTIVE_MONITOR)-$MON_WIDTH
+let THIRD_MIDDLE_POS=$THIRD_LEFT_POS+$THIRD_X_SIZE
+
+let QUARTER_X_SIZE=$HALF_X_SIZE
+let QUARTER_Y_SIZE=$MON_HEIGHT/2
+let QUARTER_TOP_LEFT_POS=$HALF_LEFT_POS
+let QUARTER_TOP_RIGHT_POS=$HALF_RIGHT_POS
+let QUARTER_BOTTOM_LEFT_POS=$HALF_LEFT_POS
+let QUARTER_BOTTOM_RIGHT_POS=$HALF_RIGHT_POS
+
+let Y_MAX_SIZE=$MON_HEIGHT-$BAR_HEIGHT_BOT-$BAR_HEIGHT_TOP
+let QUARTER_Y_SIZE=$QUARTER_Y_SIZE-$BAR_HEIGHT_BOT
+
+# -e GRAVITY,X_POS,Y_POS,X_WIDTH,Y_HEIGHT
+case "$DEST" in
+	half-right)
+		echo "half-right"
+		wmctrl -r :ACTIVE: -e 0,$HALF_RIGHT_POS,$BAR_HEIGHT_TOP,$HALF_X_SIZE,$Y_MAX_SIZE
+        wtf $(pfw)
+		;;
+	half-left)
+		echo "half-left"
+		wmctrl -r :ACTIVE: -e 0,$HALF_LEFT_POS,$BAR_HEIGHT_TOP,$HALF_X_SIZE,$Y_MAX_SIZE
+        wtf $(pfw)
+		;;
+	third-right)
+		echo "third right"
+		wmctrl -r :ACTIVE: -e 0,$THIRD_RIGHT_POS,$BAR_HEIGHT_TOP,$THIRD_X_SIZE,$Y_MAX_SIZE
+        wtf $(pfw)
+		;;
+	third-middle)
+		echo "third middle"
+		wmctrl -r :ACTIVE: -e 0,$THIRD_MIDDLE_POS,$BAR_HEIGHT_TOP,$THIRD_X_SIZE,$Y_MAX_SIZE
+        wtf $(pfw)
+		;;
+	third-left)
+		echo "third left"
+		wmctrl -r :ACTIVE: -e 0,$THIRD_LEFT_POS,$BAR_HEIGHT_TOP,$THIRD_X_SIZE,$Y_MAX_SIZE
+        wtf $(pfw)
+		;;
+	quarter-top-left)
+		echo "quarter top left"
+		wmctrl -r :ACTIVE: -e 0,$QUARTER_TOP_LEFT_POS,$BAR_HEIGHT_TOP,$QUARTER_X_SIZE,$QUARTER_Y_SIZE
+        wtf $(pfw)
+		;;
+	quarter-top-right)
+		echo "quarter top right"
+		wmctrl -r :ACTIVE: -e 0,$QUARTER_TOP_RIGHT_POS,$BAR_HEIGHT_TOP,$QUARTER_X_SIZE,$QUARTER_Y_SIZE
+        wtf $(pfw)
+		;;
+	quarter-bottom-left)
+		echo "quarter bottom left"
+		wmctrl -r :ACTIVE: -e 0,$QUARTER_BOTTOM_LEFT_POS,$HALF_Y_SIZE,$QUARTER_X_SIZE,$QUARTER_Y_SIZE
+        wtf $(pfw)
+		;;
+	quarter-bottom-right)
+		echo "quarter bottom right"
+		wmctrl -r :ACTIVE: -e 0,$QUARTER_BOTTOM_RIGHT_POS,$HALF_Y_SIZE,$QUARTER_X_SIZE,$QUARTER_Y_SIZE
+        wtf $(pfw)
+		;;
+esac
