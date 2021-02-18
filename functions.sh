@@ -8,8 +8,8 @@ function gpush() {
 }
 
 function title() {
-	[ -z $1 ] && TITLE=$DEFAULT_TERM_TITLE || TITLE="$DEFAULT_TERM_TITLE - $1"
-	PROMPT_COMMAND='echo -ne "\033]0;'"[$TITLE]"'\007"'
+	[ -z $1 ] && TERM_TITLE=$DEFAULT_TERM_TITLE || TERM_TITLE="$DEFAULT_TERM_TITLE - $1"
+	#PROMPT_COMMAND='echo -ne "\033]0;'"[$TITLE]"'\007"'
 }
 
 function get_git_branch() {

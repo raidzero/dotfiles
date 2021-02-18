@@ -1,9 +1,11 @@
 #!/bin/bash
-# DVI-D-0, DP-1, DVI-I-1
+# DVI-D-0, DP-1, DVI-I-1 (770)
+# DP-4, DVI-D-0, DP-0
 
 DISPLAYS=$(cat /tmp/randrmode) # can be jkl, any combination or blank
 
-OUTPUTS=$(echo -e "DVI-D-0\nDP-1\nDVI-I-1")
+#OUTPUTS=$(echo -e "DP-1\nDVI-I-1\nDVI-D-0")
+OUTPUTS=$(echo -e "DP-4\nDVI-D-0\nDP-0")
 
 if [ -z "$DISPLAYS" ]; then
 	xrandr --auto

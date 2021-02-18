@@ -15,5 +15,5 @@ if [ -n "${query}" ]; then
 	fi
 
 	# open a new google search with the query :)
-	$BROWSER https://google.com/search?q="${query}"
+	chromium https://google.com/search?q="${query}"
 fi

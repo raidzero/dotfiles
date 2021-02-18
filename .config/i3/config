@@ -18,41 +18,12 @@ font pango:Ninbus Sans L, Awesome 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec --no-startup-id urxvtc
-bindsym $mod+Shift+Return exec --no-startup-id urxvtc -name urxvt_floating
-bindsym $mod+Shift+p exec --no-startup-id urxvtc -name urxvt_python -e python
-
-#bindsym $mod+Return exec --no-startup-id ~/Downloads/AUR/st-neonwave-git/src/st-neonwave/st
-
 # kill focused window 
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+x kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run -nb '#000000' -nf '#ffffff' -sb '#ff00ff' -sf '#000000' -fn 'Inconsolata-11'
-
-# metroid hack launcher
-bindsym $mod+z exec --no-startup-id ~/bin/metroid.sh
-
-# lock screen
-bindsym $mod+Escape exec --no-startup-id ~/.config/i3/lockscreen
-
-# screenshot (fullscreen)
-bindsym $mod+Print exec --no-startup-id scrot ~/Pictures/screenshots/`date +%Y%m%d-%H%M%S`.png
-
-# screenshot (selection)
-bindsym --release $mod+Shift+Print exec --no-startup-id scrot -s ~/Pictures/screenshots/`date +%Y%m%d-%H%M%S`.png
-
-# task manager
-bindsym $mod+BackSpace exec --no-startup-id xfce4-taskmanager
-
-# calendar
-bindsym $mod+c exec --no-startup-id gsimplecal
-
 # show scratchpad term
 bindsym $mod+grave scratchpad show
-#bindsym $mod+grave ~/.config/i3/scratchpad.sh 
 
 # make something sticky and small in a corner
 bindsym $mod+y fullscreen disable; floating enable; resize set 640 480; sticky enable; move window to position 1270 590
@@ -61,14 +32,9 @@ bindsym $mod+Shift+y fullscreen disable; floating disable; sticky disable
 
 # unhide a hidden window
 bindsym $mod+Shift+u exec --no-startup-id ~/.config/i3/unhide.sh
+
 # rename current workspace
 bindsym $mod+n exec --no-startup-id ~/.config/i3/renamews.sh
-
-# google search
-bindsym $mod+Shift+g exec --no-startup-id ~/.config/i3/google_search.sh
-
-# show rofi in window mode
-bindsym $mod+Tab exec --no-startup-id rofi -hide-scrollbar -show window
 
 #change focus
 bindsym $mod+Left focus left
@@ -132,10 +98,6 @@ bindsym $mod+b focus child
 # send to scratchpad 
 bindsym $mod+Shift+grave move window to scratchpad
 
-bindsym $mod+Shift+w exec --no-startup-id sh ~/.fehbg
-
-# switch to vt 2
-bindsym Mod1+XF86Forward exec --no-startup-id sudo chvt 2
 set $workspace1 "1:term"
 set $workspace2 "2:code"
 set $workspace3 "3:www"
@@ -165,31 +127,6 @@ bindsym $mod+Control+7 workspace number 17
 bindsym $mod+Control+8 workspace number 18
 bindsym $mod+Control+9 workspace number 19
 bindsym $mod+Control+0 workspace number 20
-
-# blackwidow volume keys
-bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/volume.sh mute
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/volume.sh up 
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/volume.sh down
-
-# brightness keys
-bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/backlight.sh up
-bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/backlight.sh down
-bindsym XF86KbdBrightnessUp exec --no-startup-id ~/.config/i3/kb-backlight.sh up
-bindsym XF86KbdBrightnessDown exec --no-startup-id ~/.config/i3/kb-backlight.sh down
-
-# blackwidow macro keys
-  # switch workspace
-bindsym XF86Tools workspace $workspace1
-bindsym XF86Launch5 workspace $workspace2
-bindsym XF86Launch6 workspace $workspace3
-bindsym XF86Launch7 workspace $workspace4
-bindsym XF86Launch8 workspace $workspace5
-  # move to workspace
-bindsym Shift+XF86Tools move container to workspace $workspace1
-bindsym Shift+XF86Launch5 move container to workspace $workspace2
-bindsym Shift+XF86Launch6 move container to workspace $workspace3
-bindsym Shift+XF86Launch7 move container to workspace $workspace4
-bindsym Shift+XF86Launch8 move container to workspace $workspace5
 
 # move to next/prev workspace on output
 bindsym $mod+bracketleft workspace prev_on_output
@@ -221,10 +158,6 @@ bindsym $mod+Shift+Control+7 move container to workspace number 17
 bindsym $mod+Shift+Control+8 move container to workspace number 18
 bindsym $mod+Shift+Control+9 move container to workspace number 19
 bindsym $mod+Shift+Control+0 move container to workspace number 20
-
-# divvy emulation for floating windows
-bindsym Control+Mod1+Right exec --no-startup-id ~/bin/divvy half-right
-bindsym Control+Mod1+Left exec --no-startup-id ~/bin/divvy half-left
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -320,11 +253,24 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
+bar {
+    position bottom
+    workspace_buttons no
+    binding_mode_indicator no
+    status_command ~/.config/i3/win_list.py
+    colors {
+        statusline          #ffffff
+        background          #000000
+    }
+}
+
+
 # make float
 for_window [class="Xfce4-taskmanager"] floating enable
 for_window [class="Galculator"] floating enable
 for_window [class="Gsimplecal"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="qpaeq"] floating enable
 for_window [class="Sxiv"] floating enable
 for_window [class="feh"] floating enable
 
@@ -333,14 +279,15 @@ for_window [class="jetbrains-studio" title="^Android Virtual Device Manager$"] f
 for_window [title="^Android Emulator - .*$"] floating enable, border normal
 
 # hangouts: never float, never sticky, no border, always on workspace 5
-for_window [title="^Google Hangouts.*$" window_role="pop-up"] floating disable, sticky disable, border 1pixel, move to workspace $workspace5
+for_window [title="^Google Hangouts.*$" window_role="pop-up"] floating disable, sticky disable, border 1pixel
+#, move to workspace $workspace5
 
 # scratchpad terminal
 for_window [instance="urxvt_scratchpad"] move scratchpad; scratchpad show; move position 15px 15px; resize set 1000px 500px; move scratchpad
 
 # floating terminal
 for_window [instance="urxvt_floating"] floating enable
-for_window [instance="urxvt_python"] floating enable, resize set 500px 225px, move window to position 1410 846
+for_window [instance="urxvt_python"] floating enable, resize set 500px 225px, exec ~/bin/move_window bottom-right
 
 # steam stuff
 for_window [class="^Steam$"] move to workspace $workspace0
@@ -370,30 +317,4 @@ hide_edge_borders both
 
 #Startup programs
 exec --no-startup-id ~/.config/i3/autostart.sh
-
-## 60% keyboard modes ##
-# focus window
-#set $focusmenu "Focus Direction I/J/K/L"
-#bindsym $mod+f mode $focusmenu
-#mode $focusmenu {
-#	bindsym k focus up
-#	bindsym h focus left
-#	bindsym j focus down
-#	bindsym l focus right
-#
-#	bindsym Escape	mode default
-#	bindsym Return	mode default
-#}
-#
-## move window
-#set $movemenu "Move Window I/J/K/L"
-#bindsym $mod+m mode $movemenu
-#mode $movemenu {
-#	bindsym k move up
-#	bindsym h move left
-#	bindsym j move down
-#	bindsym l move right
-#
-#	bindsym Escape	mode default
-#	bindsym Return	mode default
-#}
+exec --no-startup-id sxhkd -c ~/.config/sxhkd/global.sxhkdrc

@@ -1,0 +1,77 @@
+# basic launchers
+super + Return
+	urxvtc
+
+super + shift + Return
+    urxvtc -name urxvt_floating
+
+super + shift + p
+    urxvtc -name urxvt_python -e python
+
+super + d
+	dmenu_run -nb '#000000' -nf '#ffffff' -sb '#ff00ff' -sf '#000000' -fn 'Inconsolata-11'
+
+super + c
+    gsimplecal
+
+super + shift + c
+    gsimplecal
+
+super + Escape
+    ~/.config/i3/lockscreen
+
+super + Print
+    scrot ~/Pictures/screenshots/`date +%Y%m%d-%H%M%S`.png
+    
+super + shift + Print
+    maim -s > ~/Pictures/screenshots/`date +%Y%m%d-%H%M%S`.png
+
+super + Tab
+    rofi -hide-scrollbar -show window
+
+super + Scroll_Lock
+    ~/dotfiles/bin/sysmenu.sh
+
+ctrl + super + alt + Tab
+    skippy-xd-toggle
+
+super + BackSpace 
+    xfce4-taskmanager
+
+super + shift + g
+    ~/.config/i3/google_search.sh
+
+super + Tab
+    rofi -hide-scrollbar -show window
+
+super + shift + w
+    sh ~/.fehbg
+
+# volume / brightness
+XF86AudioMute 
+    ~/.config/i3/volume.sh mute
+XF86AudioRaiseVolume 
+    ~/.config/i3/volume.sh up 
+XF86AudioLowerVolume
+    ~/.config/i3/volume.sh down
+
+
+XF86MonBrightnessUp
+    ~/.config/i3/backlight.sh up
+XF86MonBrightnessDown
+    ~/.config/i3/backlight.sh down
+XF86KbdBrightnessUp
+    ~/.config/i3/kb-backlight.sh up
+XF86KbdBrightnessDown
+    ~/.config/i3/kb-backlight.sh down
+
+# divvy
+alt + super + {q,a,d,e,h,l,z,x,c}
+    ~/bin/divvy { quarter-top-left,quarter-bottom-left,quarter-bottom-right,quarter-top-right,half-left,half-right,third-left,third-middle,third-right} 0 15
+
+alt + super + {y,u,b,n,g}
+    ~/bin/move_window {top-left,top-right,bottom-left,bottom-right,center}
+
+# dmenu things
+super + z
+    ~/bin/metroid.sh

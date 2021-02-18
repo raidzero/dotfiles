@@ -1,5 +1,5 @@
 #!/bin/bash
-~/.config/sway/toggle_active_outputs.py active
+swaymsg "output * dpms on"
 
 
 if swaymsg -t get_outputs -r | grep 3840; then

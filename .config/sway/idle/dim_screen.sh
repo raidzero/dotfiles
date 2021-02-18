@@ -15,7 +15,9 @@ MAX_BRIGHTNESS_FILE="/sys/class/backlight/intel_backlight/max_brightness"
 MAX=$(cat $MAX_BRIGHTNESS_FILE)
 cat $BRIGHTNESS_FILE > /tmp/prev_brightness
 
-let IDLE_BRIGHTNESS=$MAX/10 # 10%
+
+let IDLE_BRIGHTNESS=$MAX/200 # 0.5%
+echo "wrote brightness 10% ($IDLE_BRIGHTNESS}. max: $MAX" >> /tmp/brightness.log
 ~/.config/sway/idle/brightness $IDLE_BRIGHTNESS
 pkill -SIGRTMIN+20 i3blocks
 

@@ -4,10 +4,10 @@
 RES=`xdpyinfo | grep dimensions`
 
 # 1440?
-if [[ $RES =~ 1440 ]]; then
-	RES=1440
+if [[ $RES =~ 2160 ]]; then
+	RES=2160
 else
-	RES=1080
+	RES=1200
 fi
 
 
@@ -15,9 +15,11 @@ fi
 if [ ! $(ps -ef | grep -E "(i3|sway)lock" | grep -v lock) ]; then
 	if [[ ! $(pidof sway) ]]; then
 		/home/raidzero/Downloads/i3lock-lixxia/i3lock -c '#000000' -l '#ffffff' -i /home/raidzero/wallpapers/trust_the_computer-$RES.png -e
+        xset dpms force off
 	else
-		swaylock -i /home/raidzero/wallpapers/trust_the_computer-$RES.png
+		swaylock -i /home/raidzero/wallpapers/trust_the_computer-$RES.png --ring-color 'ffffff' --line-color 'ffffff' --text-color 'ffffff' &
+        sleep 1
+        #~/.config/sway/toggle_active_outputs.py idle
 	fi
 fi
 
-#xset dpms force off

@@ -1,0 +1,13 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+super + Return
+	urxvtc
+
+# program launcher
+super + d
+	dmenu_run
+
+

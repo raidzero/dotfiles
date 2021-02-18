@@ -1,9 +1,18 @@
 #!/bin/bash
-
-export WLC_REPEAT_DELAY=300
-
 export XKB_DEFAULT_OPTIONS=caps:super
-export XKB_DEFAULT_MODEL=chromebook_m_ralt
 export XKB_DEFAULT_LAYOUT=us
 
+export _JAVA_AWT_WM_NONREPARENTING=1
+export QT_QPA_PLATFORM=wayland-egl
+export QT_STYLE_OVERRIDE=gtk2
+export SDL_VIDEODRIVER=wayland
+
+# firefox smooth scroll
+export MOZ_USE_XINPUT2=1
 sway
+#sway -d 2> ~/sway.log
+
+if [ $? -ne 0 ];then
+    echo "Sway exited abnormally."
+    sudo systemctl poweroff
+fi

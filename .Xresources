@@ -47,7 +47,7 @@ rofi.lines: 10
 	#define urxvt_letter_spacing -1
 #elif defined SRVR_xps
 	#define urxvt_font_size 14
-	#define urxvt_letter_spacing -1
+	#define urxvt_letter_spacing 1
 #elif defined SRVR_baseline
 	#define urxvt_font_size 14
 	#define urxvt_letter_spacing -1
@@ -57,23 +57,32 @@ rofi.lines: 10
 #endif
 
 ! make it easy to change font in one place
-#define urxvt_font xft:Hack:pixelsize=urxvt_font_size
-#define urxvt_bold_font urxvt_font:style=Bold
+!#define urxvt_font xft:Hack:pixelsize=urxvt_font_size
+!#define urxvt_bold_font urxvt_font:style=Bold
+
+URxvt*font:              -xos4-terminus-medium-*-*-*-16-*-72-72-c-80-*-*
+URxvt*boldFont:          -xos4-terminus-bold-*-*-*-16-*-72-72-c-80-*-*
+URxvt*italicFont:        -xos4-terminus-medium-*-*-*-16-*-72-72-c-80-*-*
+URxvt*boldItalicFont:    -xos4-terminus-bold-*-*-*-16-*-72-72-c-80-*-*
 
 URxvt*internalBorder: 10 
-URxvt*font: urxvt_font
-URxvt*boldFont: urxvt_bold_font
+!URxvt*font: urxvt_font
+!URxvt*boldFont: urxvt_bold_font
 
 URxvt*allow_bold: true
 URxvt*letterSpace: urxvt_letter_spacing
 
-URxvt*buffered: false
+URxvt*buffered: true
 
 #ifdef SRVR_xps
-	URxvt*depth:32
-	URxvt*background:rgba:0000/0000/0000/ddcc
+!	URxvt.transparent: true
+!	URxvt*shading: 10
+    URxvt*depth:32
+    URxvt*background:rgba:0000/0000/0000/ddcc
 #elif defined SRVR_baseline
 	URxvt.transparent: true
 	URxvt*shading: 10
 #endif
 URxvt*scrollBar:     false
+
+twobwm.enable_compton:  false

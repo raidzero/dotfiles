@@ -1,7 +1,8 @@
 #! /bin/sh
+# if 4k, start everything in floating mode
+[[ $(xdpyinfo | grep -i 3840x2160) ]] && bspc rule -a "*" state=floating follow=on
 
 sxhkd &
-sh ~/.config/i3/autostart.sh &
 
 bspc config focus_follows_pointer true
 bspc config click_to_focus true
@@ -16,8 +17,4 @@ bspc config borderless_monocle		true
 bspc config gapless_monocle			true
 bspc config single_monocle			true
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
+sh ~/.config/i3/autostart.sh &

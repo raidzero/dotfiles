@@ -1,0 +1,4 @@
+#!/bin/bash
+
+~/.config/i3/lockscreen &
+sudo ddcutil -b 4 setvcp 60 0x10 --noverify

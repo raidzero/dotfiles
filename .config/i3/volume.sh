@@ -35,7 +35,9 @@ fi
 VOL=`amixer get Master | grep \% | cut -d '[' -f2 | tr -d '[]' | head -n 1`
 
 if [ -z "$MUTED" ]; then
-	dunstify -r 1000 "Volume set to $VOL."
+	dunstify -t 2 -r 1000 "Volume set to $VOL."
 else
-	dunstify -r 1000 "Sound muted."
+	dunstify -t 2 -r 1000 "Sound muted."
 fi
+
+pkill -SIGRTMIN+10 i3blocks

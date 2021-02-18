@@ -10,11 +10,11 @@
 [colors]
 background = #d8000000
 foreground = #ffffff
-primary = #00ff54
+primary = #00ffff
 alert = #bd2c40
 
 [bar/top]
-monitor = ${env:MONITOR}
+#monitor = ${env:MONITOR}
 width = 100%
 height = 15
 radius = 0.0
@@ -46,12 +46,32 @@ font-3 = FontAwesome:pixelsize=10;2
 font-4 = DejaVu Sans:fontformat=truetype:size=10;1
 
 #modules-left = cpu memory filesystem volume date 
-modules-left = dateTime dateDate volume filesystem memory cpu 
-modules-center = ewmh
-modules-right = 
+#modules-left = dateTime dateDate volume filesystem memory cpu 
+#modules-center = ewmh
+modules-right = cpu memory wlan battery volume backlight date
+modules-center = xwindow
+modules-left = ewmh
 
-tray-position =
-tray-padding =
+tray-position = right
+tray-padding = 3
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+
+format = <ramp> <label>
+format-underline = ${colors.primary}
+
+; Available tokens:
+;   %percentage% (default)
+label = %percentage%%
+
+; Only applies if <ramp> is used
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
 
 [module/xwindow]
 type = internal/xwindow
@@ -107,7 +127,7 @@ label = "%percentage_used%%"
 
 [module/wlan]
 type = internal/network
-interface = wlp1s0
+interface = wlp58s0
 interval = 3.0
 
 format-connected = <label-connected>
@@ -120,21 +140,18 @@ format-disconnected = <label-disconnected>
 format-disconnected-underline = ${colors.alert}
 label-disconnected =  Disconnected
 
-[module/dateTime]
+[module/date]
 type = internal/date
 interval = 5
 
-time =  %H:%M %p
+date =
+date-alt = " %a, %b %d %Y"
 
-label = %time% 
+time = " %l:%M %p "
 
-[module/dateDate]
-type = internal/date
-interval = 5
+format-underline = ${colors.primary}
 
-date =  %a, %b %d %Y
-
-label =  %date%
+label = %date% %time%
 
 [module/volume]
 type = internal/volume

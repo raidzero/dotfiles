@@ -12,8 +12,6 @@ if [ "$HOSTNAME" == "xps" ]; then
 	compton --config ~/.config/compton/compton.conf -b
 fi
 
-python2 /bin/dropbox start &
-
 sh ~/.fehbg & # set background
 
 # touchpad gestures!
@@ -25,6 +23,8 @@ urxvtc -name urxvt_scratchpad -title ScratchPad &
 
 ~/.config/i3/polybar.sh &
 
+~/.config/i3/restore_session_prompt.sh &
+
 sleep 10 # wait ten seconds? idk why but its needed
 /usr/lib/geoclue-2.0/demos/agent & # start geo clue agent
-pgrep redshift &> /dev/null || echo `date` > ~/.redshift.log && redshift -v -c ~/.config/redshift.conf &>> ~/.redshift.log &
+pgrep redshift &> /dev/null || redshift -v -c ~/.config/redshift.conf &

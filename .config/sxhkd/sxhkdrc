@@ -1,22 +1,6 @@
-#
-# wm independent hotkeys
-#
-
-# terminal emulator
-super + Return
-	urxvtc
-
-# program launcher
-super + d
-	dmenu_run
-
 # make sxhkd reload its configuration files:
 super + shift + c
 	pkill -USR1 -x sxhkd
-
-#
-# bspwm hotkeys
-#
 
 # quit bspwm normally
 super + shift + e
@@ -88,6 +72,10 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
+# Focus next window
+alt + {_,shift +} Tab
+  bspc node -f {next,prev}.local
+
 #
 # preselect
 #
@@ -123,21 +111,3 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
-
-# launchers
-
-# audio
-XF86AudioMute 
-	~/.config/i3/volume.sh mute
-XF86AudioRaiseVolume
-	~/.config/i3/volume.sh up
-XF86AudioLowerVolume
-	~/.config/i3/volume.sh down
-	
-# backlight
-XF86MonBrightnessUp
-	~/.config/i3/backlight.sh up
-XF86MonBrightnessDown
-	~/.config/i3/backlight.sh down
-
-

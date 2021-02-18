@@ -1,0 +1,210 @@
+#!/bin/bash
+# Session management script for i3.
+
+# The sub-process to execute.
+action="$1"
+
+# The list of available lockers.
+lockers=("xflock4" "light-locker")
+
+# The cache directory for all persistent session data.
+cache_dir="${HOME}/.cache/i3"
+
+## Get window list for all workspaces.
+function session--windows() {
+	wmctrl -l -p -x | awk '{printf "%s %d %s\n", $1, $3, $4}'
+}
+
+## Get layout for workspace nameber.
+function session--workspace-layout() {
+	local name="$1"
+
+	read -r -d '' cleanup <<-'EOM'
+		NR == 1 {next}                    # Skip first line in document.
+		$0 ~ "// \"title" {next}          # Skip title match for window.
+		$0 ~ "// \"" {sub("// \"", "\"")} # Uncomment window definitions.
+		$0 ~ "//" {next}                  # Remove all other comments
+		{gsub("\\\\", ""); print}         # Remove all backslash escapes.
+	EOM
+
+	awk "${cleanup}" <<< $(i3-save-tree --workspace "${name}") | jq -sr '.'
+}
+
+## Get window class list from layout.
+function session--layout-classes() {
+	local layout="$1"
+
+	# Clean window instance and class names.
+	read -r -d '' cleanup <<-'EOM'
+		 {gsub("\\$\\^", "."); print substr($0, 3, length($0) - 4)}
+	EOM
+
+	jq '.. | .swallows? | .[]? | .instance + .class' <<< "${layout}" | awk "${cleanup}"
+}
+
+## Get command list from layout.
+function session--layout-commands() {
+	local commands=()
+	local windows=$(session--windows)
+	local classes=$(session--layout-classes "$1")
+
+	while read class
+	do
+		local id=$(awk '$3 ~ "'"${class}"'" {print $1; exit}' <<< "${windows}")
+		local pid=$(awk '$3 ~ "'"${class}"'" {print $2; exit}' <<< "${windows}")
+		local cmd=$(ps -p "${pid}" -o args --no-headers)
+
+		commands+=('"'"${cmd}"'"')
+	done <<< "${classes}"
+
+	jq -sr '.' <<< "${commands[@]}"
+}
+
+## Save session state for future restoration.
+function session--save() {
+	local layout=()
+	local commands=()
+
+	# Save layout for each workspace in turn.
+	local workspaces=$(i3-msg -t get_workspaces)
+
+	for i in $(seq 0 $(($(jq -r '. | length' <<< "${workspaces}") - 1)))
+	do
+		local name=$(jq -r ".[$i].name" <<< "${workspaces}")
+
+		# Get layout for workspace.
+		layout[$i]=$(session--workspace-layout "${name}")
+
+		# Get list of running commands for workspace.
+		commands[$i]=$(session--layout-commands "${layout[$i]}")
+	done
+
+	jq -r '.' <<< '{
+	    "layout":    '$(jq -sr '.' <<< "${layout[@]}")',
+	    "commands":  '$(jq -sr '.' <<< "${commands[@]}")',
+	    "workspaces":'"${workspaces[*]}"'
+	}' > "${cache_dir}/session.json"
+
+	cat ~/.cache/i3/hist/* > ${cache_dir}/apps.running
+
+}
+
+## Restore previously saved session.
+function session--restore() {
+	# Check for existing session file.
+	if [[ ! -e "${cache_dir}/session.json" ]]
+	then
+		echo "Session file does not exist, did you run '$0 save' first?"
+		exit 1
+	fi
+
+	local session=$(cat "${cache_dir}/session.json")
+	local temp=$(mktemp)
+
+	# Clean up temporary files on exit.
+	trap "rm -f ${temp}" exit
+
+	# Restore layout and running commands for each workspace.
+	for i in $(seq 0 $(($(jq -r '.workspaces | length' <<< "${session}") - 1)))
+	do
+		local name=$(jq -r ".workspaces[$i].name" <<< "${session}")
+		local output=$(jq -r ".workspaces[$i].output" <<< "${session}")
+
+		jq -r ".layout[$i]" <<< "${session}" > "${temp}"
+		i3-msg "workspace ${name}; append_layout ${temp}; move workspace to ${output}"
+
+		# Run all commands for workspace.
+		for c in $(seq 0 $(($(jq -r ".commands[$i] | length" <<< "${session}") - 1)))
+		do
+			exec $(jq -r ".commands[$i][$c]" <<< "${session}") &
+		done
+	done
+
+	# Move to previously active workspaces.
+	local active=$(jq -r '.workspaces[] | select(.visible == true) | .name' <<< "${session}")
+	while read name; do i3-msg "workspace ${name}"; done <<< "${active}"
+
+	for line in $(cat ${cache_dir}/apps.running); do
+		eval "$line" &
+	done
+
+	rm ${cache_dir}/apps.running
+	rm ${cache_dir}/hist/*
+}
+
+## Lock screen with pre-configured screen locker.
+function session--lock() {
+	# Suspend notifications while locked.
+	killall -SIGUSR1 dunst
+
+	# Unsuspend notifications on exit.
+	trap 'killall -SIGUSR2 dunst' exit
+
+	# Iterate through list of supporter lockers and choose based on precedence.
+	for locker in ${lockers[*]}
+	do
+		# Do not attempt to use non-existing locker.
+		[[ "x$(which ${locker})" == "x" ]] && continue
+
+		# Lock screen using locker command.
+		case "${locker}" in
+			light-locker)
+				light-locker-command -l
+				;;
+			*)
+				${locker}
+				;;
+		esac
+
+		# Return early if locker command succeeded.
+		[[ $? -eq 0 ]] && return
+	done
+}
+
+## Close all windows gracefully.
+function session--close() {
+	# Fetch window list.
+	local windows=$(session--windows | awk '{print $1}')
+
+	# Close all windows.
+	while read id; do wmctrl -ic "${id}"; done <<< "${windows}"
+}
+
+# Create shared cache directory.
+mkdir -p "${cache_dir}"
+
+# Select from available actions.
+case ${action} in
+	save)
+		session--save
+		;;
+	restore)
+		session--restore
+		;;
+	lock)
+		session--lock
+		;;
+	suspend)
+		session--lock && sleep 1
+		systemctl suspend
+		;;
+	logout)
+		session--save
+		session--close && sleep 1
+		gnome-session-quit --logout --no-prompt
+		;;
+	reboot)
+		session--save
+		session--close && sleep 1
+		systemctl reboot
+		;;
+	poweroff)
+		session--save
+		session--close && sleep 1
+		systemctl poweroff -i
+		;;
+	*)
+		echo 'Unknown command, please use one of the following:'
+		echo "'lock', 'suspend', 'logout', 'reboot', 'poweroff'"
+		;;
+esac

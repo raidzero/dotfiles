@@ -13,8 +13,8 @@ BRIGHTNESS_FILE=/sys/class/backlight/intel_backlight/brightness
 MAX_BRIGHTNESS=`cat /sys/class/backlight/intel_backlight/max_brightness`
 CURRENT_BRIGHTNESS=`cat $BRIGHTNESS_FILE`
 
-# we want do do 2.5% at a time so divide max by 40 to get steps
-let STEP=$MAX_BRIGHTNESS/40
+# we want do 0.5% steps
+let STEP=$MAX_BRIGHTNESS/200
 
 case $CMD in
 	up)
@@ -40,3 +40,5 @@ echo "$NOTIFY_STR"
 
 
 cat /sys/class/backlight/intel_backlight/brightness > ~/.lcd-brightness
+
+pkill -SIGRTMIN+20 i3blocks

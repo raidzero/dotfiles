@@ -1,0 +1,16 @@
+#!/bin/bash
+
+I2C_BUS=4
+
+if [[ $(lspci | grep -i "gtx 1060") ]]; then
+    I2C_BUS=12
+fi
+
+# only run if this is the active input
+sudo ddcutil getvcp 60 | grep DisplayPort-1 &> /dev/null || exit 0
+
+if [ "$1" == "get" ]; then
+    sudo ddcutil -b 4 getvcp 10 | cut -d '=' -f2 | cut -d ',' -f1 | sed 's/^ *//g'
+else
+    sudo ddcutil -b $I2C_BUS setvcp 10 $1 --noverify
+fi
